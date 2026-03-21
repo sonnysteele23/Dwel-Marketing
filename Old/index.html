@@ -1,0 +1,3250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dwel Caregiving Platform</title>
+    <style>
+        :root {
+            /* Dwel Design System Color Palette */
+            --deep-blue: #2C3E50;
+            --sage-green: #7FB069;
+            --soft-gray: #F8F9FA;
+            --white: #FFFFFF;
+            --gentle-gold: #F4D03F;
+            --error-red: #E74C3C;
+            --success-green: #28A745;
+            --warning-yellow: #FFC107;
+            --info-blue: #17A2B8;
+            --neutral-gray: #6C757D;
+            --light-border: #DEE2E6;
+            --urgent-orange: #FD7E14;
+            
+            /* Typography */
+            --font-family: Georgia, -apple-system, BlinkMacSystemFont, 'Segoe UI', serif;
+            --font-size-xs: 12px;
+            --font-size-sm: 14px;
+            --font-size-base: 16px;
+            --font-size-lg: 18px;
+            --font-size-xl: 20px;
+            --font-size-2xl: 24px;
+            --font-size-3xl: 30px;
+            --font-size-4xl: 36px;
+            
+            /* Spacing */
+            --space-xs: 4px;
+            --space-sm: 8px;
+            --space-md: 16px;
+            --space-lg: 24px;
+            --space-xl: 32px;
+            --space-2xl: 48px;
+            
+            /* Border radius */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-family);
+            font-size: var(--font-size-base);
+            line-height: 1.6;
+            background-color: var(--soft-gray);
+            color: var(--deep-blue);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-md);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--deep-blue) 0%, var(--sage-green) 100%);
+            color: var(--white);
+            padding: var(--space-xl) var(--space-md);
+            text-align: center;
+            margin-bottom: var(--space-xl);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .header h1 {
+            font-size: var(--font-size-4xl);
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .header p {
+            font-size: var(--font-size-lg);
+            opacity: 0.9;
+        }
+        
+        /* Role Selection */
+        .role-selection {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-xl);
+            margin-bottom: var(--space-2xl);
+        }
+        
+        .role-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: var(--space-xl);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+            border: 3px solid transparent;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .role-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--sage-green);
+        }
+        
+        .role-card.active {
+            border-color: var(--sage-green);
+            background: linear-gradient(135deg, var(--white) 0%, rgba(127, 176, 105, 0.05) 100%);
+        }
+        
+        .role-card .icon {
+            font-size: 64px;
+            margin-bottom: var(--space-md);
+            display: block;
+        }
+        
+        .role-card h3 {
+            font-size: var(--font-size-2xl);
+            color: var(--deep-blue);
+            margin-bottom: var(--space-md);
+            font-weight: 600;
+        }
+        
+        .role-card p {
+            color: var(--neutral-gray);
+            font-size: var(--font-size-base);
+            margin-bottom: var(--space-md);
+        }
+        
+        .role-card .persona {
+            font-weight: 600;
+            color: var(--sage-green);
+            font-size: var(--font-size-sm);
+        }
+        
+        /* Dashboard Layout */
+        .dashboard {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        .dashboard.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .dashboard-header {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+        }
+        
+        .user-info h2 {
+            font-size: var(--font-size-3xl);
+            color: var(--deep-blue);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .user-info p {
+            color: var(--neutral-gray);
+            font-size: var(--font-size-base);
+        }
+        
+        .dashboard-actions {
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: var(--space-md) var(--space-lg);
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            min-height: 44px;
+        }
+        
+        .btn-primary {
+            background-color: var(--sage-green);
+            color: var(--white);
+        }
+        
+        .btn-primary:hover {
+            background-color: #6da054;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: var(--gentle-gold);
+            color: var(--deep-blue);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #f1c40f;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--sage-green);
+            color: var(--sage-green);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--sage-green);
+            color: var(--white);
+        }
+        
+        .btn-emergency {
+            background-color: var(--error-red);
+            color: var(--white);
+        }
+        
+        .btn-emergency:hover {
+            background-color: #c0392b;
+        }
+        
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: var(--space-xl);
+        }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+        }
+        
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-md);
+        }
+        
+        /* Cards */
+        .card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--light-border);
+        }
+        
+        .card h3 {
+            font-size: var(--font-size-xl);
+            color: var(--deep-blue);
+            margin-bottom: var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        
+        /* Notifications */
+        .notification {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            margin-bottom: var(--space-md);
+            border-left: 4px solid var(--sage-green);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            transition: all 0.3s ease;
+        }
+        
+        .notification:hover {
+            transform: translateX(8px);
+        }
+        
+        .notification.urgent {
+            border-left-color: var(--error-red);
+            background: linear-gradient(135deg, var(--white) 0%, rgba(231, 76, 60, 0.05) 100%);
+        }
+        
+        .notification.appointment {
+            border-left-color: var(--info-blue);
+        }
+        
+        .notification.work {
+            border-left-color: var(--gentle-gold);
+        }
+        
+        .notification-icon {
+            font-size: var(--font-size-2xl);
+            min-width: 48px;
+            text-align: center;
+        }
+        
+        .notification-content h4 {
+            font-size: var(--font-size-lg);
+            color: var(--deep-blue);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .notification-content p {
+            color: var(--neutral-gray);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .notification-time {
+            font-size: var(--font-size-sm);
+            color: var(--neutral-gray);
+            margin-left: auto;
+        }
+        
+        /* Status Indicators */
+        .status {
+            display: inline-flex;
+            align-items: center;
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            gap: var(--space-xs);
+        }
+        
+        .status.completed {
+            background-color: rgba(40, 167, 69, 0.1);
+            color: var(--success-green);
+        }
+        
+        .status.in-progress {
+            background-color: rgba(255, 193, 7, 0.1);
+            color: var(--warning-yellow);
+        }
+        
+        .status.upcoming {
+            background-color: rgba(23, 162, 184, 0.1);
+            color: var(--info-blue);
+        }
+        
+        .status.scheduled {
+            background-color: rgba(108, 117, 125, 0.1);
+            color: var(--neutral-gray);
+        }
+        
+        .status.missed {
+            background-color: rgba(231, 76, 60, 0.1);
+            color: var(--error-red);
+        }
+        
+        /* Metrics */
+        .metric {
+            text-align: center;
+            padding: var(--space-lg);
+        }
+        
+        .metric-value {
+            font-size: var(--font-size-4xl);
+            font-weight: 700;
+            color: var(--sage-green);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .metric-label {
+            color: var(--neutral-gray);
+            font-size: var(--font-size-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .metric.warning .metric-value {
+            color: var(--warning-yellow);
+        }
+        
+        .metric.error .metric-value {
+            color: var(--error-red);
+        }
+        
+        /* Charts Container */
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin: var(--space-md) 0;
+        }
+        
+        /* Contact Cards */
+        .contact-card {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-md);
+            background: var(--white);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--light-border);
+            margin-bottom: var(--space-md);
+        }
+        
+        .contact-info h4 {
+            font-size: var(--font-size-lg);
+            color: var(--deep-blue);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .contact-info p {
+            color: var(--neutral-gray);
+            font-size: var(--font-size-sm);
+        }
+        
+        .contact-status {
+            margin-left: auto;
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-xs);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .contact-status.available {
+            background-color: rgba(40, 167, 69, 0.1);
+            color: var(--success-green);
+        }
+        
+        .contact-status.busy {
+            background-color: rgba(255, 193, 7, 0.1);
+            color: var(--warning-yellow);
+        }
+        
+        .contact-status.with_patient {
+            background-color: rgba(23, 162, 184, 0.1);
+            color: var(--info-blue);
+        }
+        
+        /* Health Checklist */
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            padding: var(--space-md);
+            background: var(--white);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--light-border);
+            margin-bottom: var(--space-md);
+        }
+        
+        .checklist-icon {
+            font-size: var(--font-size-2xl);
+            min-width: 48px;
+            text-align: center;
+        }
+        
+        .checklist-content {
+            flex: 1;
+            margin-left: var(--space-md);
+        }
+        
+        .checklist-content h4 {
+            font-size: var(--font-size-lg);
+            color: var(--deep-blue);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .checklist-content p {
+            color: var(--neutral-gray);
+            font-size: var(--font-size-sm);
+        }
+        
+        .checklist-time {
+            color: var(--neutral-gray);
+            font-size: var(--font-size-sm);
+            margin-left: auto;
+        }
+        
+        /* Large Accessibility Features */
+        .large-text {
+            font-size: var(--font-size-xl);
+            line-height: 1.8;
+        }
+        
+        .large-button {
+            min-height: 60px;
+            font-size: var(--font-size-lg);
+            padding: var(--space-lg) var(--space-xl);
+        }
+        
+        /* Emergency Features */
+        .emergency-section {
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.1) 0%, rgba(231, 76, 60, 0.05) 100%);
+            border: 2px solid var(--error-red);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .emergency-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-md);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: var(--space-sm);
+            }
+            
+            .role-selection {
+                grid-template-columns: 1fr;
+            }
+            
+            .grid-2,
+            .grid-3,
+            .grid-4 {
+                grid-template-columns: 1fr;
+            }
+            
+            .dashboard-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .dashboard-actions {
+                justify-content: center;
+            }
+            
+            .notification,
+            .contact-card,
+            .checklist-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .notification-time,
+            .checklist-time {
+                margin-left: 0;
+                margin-top: var(--space-sm);
+            }
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+        
+        /* Success Messages */
+        .success-message {
+            background: linear-gradient(135deg, rgba(40, 167, 69, 0.1) 0%, rgba(40, 167, 69, 0.05) 100%);
+            border: 1px solid var(--success-green);
+            color: var(--success-green);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-md);
+            font-weight: 600;
+        }
+        
+        /* Calendar Styles */
+        .calendar-view {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        .calendar-view.active {
+            display: block;
+        }
+        
+        /* Calendar Integration Toolbar */
+        .calendar-toolbar {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--light-border);
+        }
+        
+        .toolbar-section h3 {
+            font-size: var(--font-size-xl);
+            color: var(--deep-blue);
+            margin-bottom: var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        
+        .integration-buttons {
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+        }
+        
+        .btn-integration {
+            background: linear-gradient(135deg, var(--sage-green) 0%, #6da054 100%);
+            color: var(--white);
+            border: none;
+            padding: var(--space-md) var(--space-lg);
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            min-height: 44px;
+            position: relative;
+        }
+        
+        .btn-integration:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            background: linear-gradient(135deg, #6da054 0%, var(--sage-green) 100%);
+        }
+        
+        .btn-add-event {
+            background: linear-gradient(135deg, var(--gentle-gold) 0%, #f1c40f 100%);
+            color: var(--deep-blue);
+        }
+        
+        .btn-add-event:hover {
+            background: linear-gradient(135deg, #f1c40f 0%, var(--gentle-gold) 100%);
+        }
+        
+        /* Event Action Buttons */
+        .event-actions {
+            position: absolute;
+            top: var(--space-sm);
+            right: var(--space-sm);
+            display: flex;
+            gap: var(--space-xs);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .event:hover .event-actions {
+            opacity: 1;
+        }
+        
+        .event-action-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid var(--light-border);
+            border-radius: var(--radius-sm);
+            padding: var(--space-xs);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 32px;
+            min-height: 32px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .event-action-btn:hover {
+            background: var(--sage-green);
+            color: var(--white);
+            transform: scale(1.1);
+        }
+        
+        .event-action-btn.edit {
+            color: var(--deep-blue);
+        }
+        
+        .event-action-btn.share {
+            color: var(--sage-green);
+        }
+        
+        .calendar-header {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+        }
+        
+        .calendar-title {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+        
+        .calendar-title h2 {
+            font-size: var(--font-size-3xl);
+            color: var(--deep-blue);
+            margin: 0;
+        }
+        
+        .week-display {
+            font-size: var(--font-size-lg);
+            color: var(--neutral-gray);
+            margin-left: var(--space-md);
+        }
+        
+        .calendar-nav {
+            display: flex;
+            gap: var(--space-md);
+            align-items: center;
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .person-calendar {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--light-border);
+        }
+        
+        .person-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+            padding-bottom: var(--space-md);
+            border-bottom: 2px solid var(--light-border);
+        }
+        
+        .person-header h3 {
+            font-size: var(--font-size-2xl);
+            margin: 0;
+            color: var(--deep-blue);
+        }
+        
+        .person-role {
+            font-size: var(--font-size-sm);
+            color: var(--neutral-gray);
+            margin-left: auto;
+        }
+        
+        .day-section {
+            margin-bottom: var(--space-lg);
+        }
+        
+        .day-header {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--deep-blue);
+            margin-bottom: var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        
+        .day-date {
+            font-size: var(--font-size-sm);
+            color: var(--neutral-gray);
+            font-weight: normal;
+        }
+        
+        .event {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            margin-bottom: var(--space-md);
+            border-left: 4px solid var(--sage-green);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: visible;
+        }
+        
+        .event:hover {
+            transform: translateX(4px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .event.caregiving {
+            border-left-color: #7FB069;
+            background: linear-gradient(135deg, rgba(127, 176, 105, 0.05) 0%, rgba(127, 176, 105, 0.02) 100%);
+        }
+        
+        .event.work {
+            border-left-color: #2C3E50;
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.05) 0%, rgba(44, 62, 80, 0.02) 100%);
+        }
+        
+        .event.personal {
+            border-left-color: #95A5A6;
+            background: linear-gradient(135deg, rgba(149, 165, 166, 0.05) 0%, rgba(149, 165, 166, 0.02) 100%);
+        }
+        
+        .event.joint_activity {
+            border-left-color: #F4D03F;
+            background: linear-gradient(135deg, rgba(244, 208, 63, 0.05) 0%, rgba(244, 208, 63, 0.02) 100%);
+        }
+        
+        .event-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .event-icon {
+            font-size: var(--font-size-lg);
+            min-width: 24px;
+        }
+        
+        .event-time {
+            font-weight: 600;
+            color: var(--deep-blue);
+            font-size: var(--font-size-sm);
+        }
+        
+        .event-title {
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            color: var(--deep-blue);
+            margin: var(--space-xs) 0;
+        }
+        
+        .event-details {
+            font-size: var(--font-size-sm);
+            color: var(--neutral-gray);
+            margin: var(--space-xs) 0;
+        }
+        
+        .event-location {
+            font-size: var(--font-size-xs);
+            color: var(--neutral-gray);
+            font-style: italic;
+        }
+        
+        .rest-day {
+            text-align: center;
+            color: var(--neutral-gray);
+            font-style: italic;
+            padding: var(--space-lg);
+            background: linear-gradient(135deg, rgba(149, 165, 166, 0.05) 0%, rgba(149, 165, 166, 0.02) 100%);
+            border-radius: var(--radius-md);
+            border: 1px dashed var(--light-border);
+        }
+        
+        .calendar-legend {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+            margin-top: var(--space-xl);
+        }
+        
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-md);
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: var(--radius-sm);
+            border: 2px solid var(--white);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .legend-color.caregiving {
+            background-color: #7FB069;
+        }
+        
+        .legend-color.work {
+            background-color: #2C3E50;
+        }
+        
+        .legend-color.personal {
+            background-color: #95A5A6;
+        }
+        
+        .legend-color.joint_activity {
+            background-color: #F4D03F;
+        }
+        
+        .legend-text {
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            color: var(--deep-blue);
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .calendar-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .calendar-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .calendar-nav {
+                justify-content: center;
+            }
+            
+            .person-header {
+                flex-direction: column;
+                text-align: center;
+                gap: var(--space-sm);
+            }
+            
+            .person-role {
+                margin-left: 0;
+            }
+            
+            .legend-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease-in;
+        }
+        
+        .modal-content {
+            background: var(--white);
+            margin: var(--space-md);
+            padding: var(--space-2xl);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            width: 100%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-xl);
+            padding-bottom: var(--space-md);
+            border-bottom: 2px solid var(--light-border);
+        }
+        
+        .modal-header h3 {
+            font-size: var(--font-size-2xl);
+            color: var(--deep-blue);
+            margin: 0;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: var(--font-size-2xl);
+            cursor: pointer;
+            color: var(--neutral-gray);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-sm);
+            transition: all 0.3s ease;
+        }
+        
+        .close-btn:hover {
+            background: var(--error-red);
+            color: var(--white);
+        }
+        
+        .form-group {
+            margin-bottom: var(--space-lg);
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: var(--space-sm);
+            font-weight: 600;
+            color: var(--deep-blue);
+            font-size: var(--font-size-base);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: var(--space-md);
+            border: 2px solid var(--light-border);
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-base);
+            transition: border-color 0.3s ease;
+            background: var(--white);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--sage-green);
+            box-shadow: 0 0 0 3px rgba(127, 176, 105, 0.1);
+        }
+        
+        .form-control.textarea {
+            resize: vertical;
+            min-height: 100px;
+            font-family: var(--font-family);
+        }
+        
+        .modal-actions {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: flex-end;
+            margin-top: var(--space-xl);
+            padding-top: var(--space-md);
+            border-top: 2px solid var(--light-border);
+        }
+        
+        .share-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-md);
+        }
+        
+        .share-option {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-md);
+            border: 2px solid var(--light-border);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+        
+        .share-option:hover {
+            border-color: var(--sage-green);
+            background: rgba(127, 176, 105, 0.05);
+            transform: translateY(-2px);
+        }
+        
+        .share-option-icon {
+            font-size: var(--font-size-xl);
+            min-width: 32px;
+        }
+        
+        .share-option-text {
+            font-weight: 600;
+            color: var(--deep-blue);
+        }
+        
+        /* Accessibility */
+        .event:focus {
+            outline: 2px solid var(--sage-green);
+            outline-offset: 2px;
+        }
+        
+        .event-action-btn:focus {
+            outline: 2px solid var(--sage-green);
+            outline-offset: 2px;
+        }
+        
+        /* Responsive Modal */
+        @media (max-width: 768px) {
+            .modal-content {
+                margin: var(--space-sm);
+                padding: var(--space-lg);
+                max-width: none;
+                width: calc(100% - var(--space-md));
+            }
+            
+            .integration-buttons {
+                flex-direction: column;
+            }
+            
+            .btn-integration {
+                justify-content: center;
+                text-align: center;
+            }
+            
+            .share-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-actions {
+                flex-direction: column;
+            }
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            .event {
+                transition: none;
+            }
+            
+            .event:hover {
+                transform: none;
+            }
+            
+            .modal-content {
+                animation: none;
+            }
+        }
+        
+        /* Quick Actions Styles */
+        .quick-actions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-lg);
+        }
+        
+        .btn-quick-action {
+            background: var(--white);
+            border: 2px solid var(--light-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            min-height: 140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: var(--space-md);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .btn-quick-action:hover {
+            border-color: var(--sage-green);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            background: linear-gradient(135deg, var(--white) 0%, rgba(127, 176, 105, 0.05) 100%);
+        }
+        
+        .quick-action-icon {
+            font-size: var(--font-size-4xl);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .quick-action-title {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            color: var(--deep-blue);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .quick-action-desc {
+            font-size: var(--font-size-sm);
+            color: var(--neutral-gray);
+            text-align: center;
+        }
+        
+        /* Order Modal Styles */
+        .order-modal-content {
+            max-width: 800px;
+            max-height: 90vh;
+        }
+        
+        .modal-subtitle {
+            color: var(--neutral-gray);
+            margin-bottom: var(--space-xl);
+            text-align: center;
+            font-size: var(--font-size-lg);
+        }
+        
+        .service-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .service-card {
+            background: var(--soft-gray);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            border: 2px solid var(--light-border);
+            transition: all 0.3s ease;
+        }
+        
+        .amazon-card {
+            border-color: #FF9900;
+        }
+        
+        .amazon-card:hover {
+            border-color: #FF9900;
+            background: rgba(255, 153, 0, 0.05);
+        }
+        
+        .instacart-card {
+            border-color: #43B02A;
+        }
+        
+        .instacart-card:hover {
+            border-color: #43B02A;
+            background: rgba(67, 176, 42, 0.05);
+        }
+        
+        .service-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .service-logo {
+            font-size: var(--font-size-4xl);
+            min-width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-md);
+        }
+        
+        .amazon-logo {
+            background: rgba(255, 153, 0, 0.1);
+            color: #FF9900;
+        }
+        
+        .instacart-logo {
+            background: rgba(67, 176, 42, 0.1);
+            color: #43B02A;
+        }
+        
+        .service-info h4 {
+            font-size: var(--font-size-xl);
+            color: var(--deep-blue);
+            margin: 0 0 var(--space-xs) 0;
+        }
+        
+        .service-info p {
+            color: var(--neutral-gray);
+            margin: 0;
+            font-size: var(--font-size-base);
+        }
+        
+        .suggested-items,
+        .recent-orders {
+            margin-bottom: var(--space-lg);
+        }
+        
+        .suggested-items h5,
+        .recent-orders h5 {
+            font-size: var(--font-size-base);
+            color: var(--deep-blue);
+            margin: 0 0 var(--space-sm) 0;
+            font-weight: 600;
+        }
+        
+        .item-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+        }
+        
+        .item-tag {
+            background: rgba(127, 176, 105, 0.1);
+            color: var(--sage-green);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-xs);
+            font-weight: 500;
+        }
+        
+        .recent-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-sm) 0;
+            border-bottom: 1px solid var(--light-border);
+            font-size: var(--font-size-sm);
+            gap: var(--space-sm);
+        }
+        
+        .recent-item:last-child {
+            border-bottom: none;
+        }
+        
+        .btn-punchout {
+            width: 100%;
+            margin-top: var(--space-md);
+            font-weight: 600;
+            font-size: var(--font-size-lg);
+            padding: var(--space-lg);
+        }
+        
+        .delivery-options {
+            background: rgba(127, 176, 105, 0.05);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-xl);
+            border: 1px solid rgba(127, 176, 105, 0.2);
+        }
+        
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            cursor: pointer;
+            font-size: var(--font-size-base);
+            color: var(--deep-blue);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .checkbox-label:last-child {
+            margin-bottom: 0;
+        }
+        
+        .checkbox-label input[type="checkbox"] {
+            margin: 0;
+            width: 20px;
+            height: 20px;
+        }
+        
+        .emergency-ordering-section {
+            background: rgba(231, 76, 60, 0.05);
+            border: 2px solid rgba(231, 76, 60, 0.2);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .emergency-ordering-section h4 {
+            color: var(--error-red);
+            font-size: var(--font-size-lg);
+            margin: 0 0 var(--space-sm) 0;
+        }
+        
+        .emergency-ordering-section p {
+            color: var(--neutral-gray);
+            margin: 0 0 var(--space-md) 0;
+        }
+        
+        .emergency-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+        
+        .saved-lists-section h4 {
+            color: var(--deep-blue);
+            font-size: var(--font-size-lg);
+            margin: 0 0 var(--space-md) 0;
+        }
+        
+        .saved-lists {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+        
+        .saved-list-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--white);
+            border: 1px solid var(--light-border);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            gap: var(--space-md);
+        }
+        
+        .list-info strong {
+            display: block;
+            color: var(--deep-blue);
+            font-size: var(--font-size-base);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .list-info span {
+            color: var(--neutral-gray);
+            font-size: var(--font-size-sm);
+        }
+        
+        .quick-options {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+        
+        .quick-options .btn {
+            justify-content: flex-start;
+            padding: var(--space-lg);
+            font-size: var(--font-size-lg);
+        }
+        
+        /* Mobile Responsive for Quick Actions */
+        @media (max-width: 768px) {
+            .quick-actions-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: var(--space-md);
+            }
+            
+            .btn-quick-action {
+                min-height: 120px;
+                padding: var(--space-lg);
+            }
+            
+            .quick-action-icon {
+                font-size: var(--font-size-3xl);
+            }
+            
+            .quick-action-title {
+                font-size: var(--font-size-lg);
+            }
+            
+            .service-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .order-modal-content {
+                margin: var(--space-sm);
+                padding: var(--space-lg);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .quick-actions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <a href="https://dwel.digital/Old/admin/">Admin Console</a>
+        <!-- Main Header -->
+        <div class="header">
+            <h1>🏠 Dwel Care Platform</h1>
+            <p>Supporting families through every stage of care</p>
+        </div>
+        
+        <!-- Role Selection -->
+        <div id="role-selection" class="role-selection">
+            <div class="role-card" onclick="selectRole('employee')">
+                <span class="icon">👔</span>
+                <h3>Employee Caregiver</h3>
+                <p>Balance work and caregiving responsibilities with integrated support tools</p>
+                <div class="persona">Michael Thompson<br>VP Operations</div>
+            </div>
+            
+            <div class="role-card" onclick="selectRole('recipient')">
+                <span class="icon">🏠</span>
+                <h3>Care Recipient</h3>
+                <p>Maintain independence with easy access to care, family, and emergency support</p>
+                <div class="persona">Frank Sr.<br>Age 78</div>
+            </div>
+            
+            <div class="role-card" onclick="selectRole('hr')">
+                <span class="icon">📊</span>
+                <h3>HR Benefits Manager</h3>
+                <p>Track program impact with comprehensive analytics and workforce insights</p>
+                <div class="persona">Jennifer Martinez<br>Director, Total Rewards</div>
+            </div>
+        </div>
+        
+        <!-- Quick Actions Section -->
+        <div class="card" style="margin-top: var(--space-xl);">
+            <h3>⚡ Quick Actions</h3>
+            <div class="quick-actions-grid">
+                <button class="btn-quick-action" onclick="openScheduleModal()">
+                    <div class="quick-action-icon">📅</div>
+                    <div class="quick-action-title">Schedule Something</div>
+                    <div class="quick-action-desc">Book appointments, arrange services</div>
+                </button>
+                
+                <button class="btn-quick-action" onclick="openOrderModal()">
+                    <div class="quick-action-icon">🛒</div>
+                    <div class="quick-action-title">Order Something</div>
+                    <div class="quick-action-desc">Groceries, supplies, medications</div>
+                </button>
+                
+                <button class="btn-quick-action" onclick="openSendModal()">
+                    <div class="quick-action-icon">📦</div>
+                    <div class="quick-action-title">Send Something</div>
+                    <div class="quick-action-desc">Care packages, prescriptions</div>
+                </button>
+                
+                <button class="btn-quick-action" onclick="openSendSomeoneModal()">
+                    <div class="quick-action-icon">👤</div>
+                    <div class="quick-action-title">Send Someone</div>
+                    <div class="quick-action-desc">Arrange visits, caregivers</div>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Employee Caregiver Dashboard -->
+        <div id="employee-dashboard" class="dashboard">
+            <div class="dashboard-header">
+                <div class="user-info">
+                    <h2>Welcome, Michael 👋</h2>
+                    <p>VP Operations • Caring for Dad for 18 months</p>
+                </div>
+                <div class="dashboard-actions">
+                    <button class="btn btn-primary" onclick="showCalendar()">📅 Our Calendar</button>
+                    <button class="btn btn-emergency large-button" onclick="callEmergency()">🚨 Emergency</button>
+                    <button class="btn btn-outline" onclick="switchRole()">↔️ Switch Role</button>
+                </div>
+            </div>
+            
+            <div class="grid-2">
+                <!-- Urgent Notifications -->
+                <div class="card">
+                    <h3>🔔 Priority Notifications</h3>
+                    <div id="employee-notifications">
+                        <!-- Notifications will be populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Work-Life Integration -->
+                <div class="card">
+                    <h3>⚖️ Work-Life Balance</h3>
+                    <div class="grid-4">
+                        <div class="metric">
+                            <div class="metric-value">94%</div>
+                            <div class="metric-label">Productivity</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">3</div>
+                            <div class="metric-label">Meetings Adjusted</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">4.5</div>
+                            <div class="metric-label">Flex Hours Used</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">4.2★</div>
+                            <div class="metric-label">Satisfaction</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid-2" style="margin-top: var(--space-xl);">
+                <!-- Care Team -->
+                <div class="card">
+                    <h3>👥 Care Team</h3>
+                    <div id="care-team">
+                        <!-- Care team will be populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Dad's Status -->
+                <div class="card">
+                    <h3>❤️ Dad's Health Status</h3>
+                    <div class="grid-3">
+                        <div class="metric">
+                            <div class="metric-value">125/82</div>
+                            <div class="metric-label">Blood Pressure</div>
+                        </div>
+                        <div class="metric warning">
+                            <div class="metric-value">85%</div>
+                            <div class="metric-label">Medication Adherence</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">2/10</div>
+                            <div class="metric-label">Pain Level</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Care Recipient Dashboard -->
+        <div id="recipient-dashboard" class="dashboard">
+            <div class="dashboard-header">
+                <div class="user-info">
+                    <h2>Hello, Frank Sr. 🌟</h2>
+                    <p>It's Monday, October 13th • Beautiful day to stay active!</p>
+                </div>
+                <div class="dashboard-actions">
+                    <button class="btn btn-primary large-button large-text" onclick="showCalendar()">📅 My Calendar</button>
+                    <button class="btn btn-secondary large-button large-text" onclick="viewHealthChecklist()">📋 Daily Health</button>
+                    <button class="btn btn-emergency large-button large-text" onclick="callEmergency()">🚨 Emergency</button>
+                    <button class="btn btn-outline" onclick="switchRole()">↔️ Switch Role</button>
+                </div>
+            </div>
+            
+            <!-- Emergency Contacts Section -->
+            <div class="emergency-section">
+                <h3 style="text-align: center; margin-bottom: var(--space-lg); font-size: var(--font-size-2xl);">🆘 Emergency Contacts</h3>
+                <div class="emergency-grid">
+                    <button class="btn btn-emergency large-button large-text" onclick="callContact('Michael', '(555) 987-6543')">
+                        📞 Call Michael<br><small>(Son)</small>
+                    </button>
+                    <button class="btn btn-emergency large-button large-text" onclick="callContact('911', '911')">
+                        🚨 Call 911<br><small>(Emergency)</small>
+                    </button>
+                    <button class="btn btn-emergency large-button large-text" onclick="callContact('Dr. Wilson', '(555) 234-5678')">
+                        👩‍⚕️ Call Doctor<br><small>(Dr. Wilson)</small>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="grid-2">
+                <!-- Daily Checklist -->
+                <div class="card">
+                    <h3>✅ Today's Health Checklist</h3>
+                    <div id="daily-checklist">
+                        <!-- Checklist will be populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Family Messages -->
+                <div class="card">
+                    <h3>💬 Family Messages</h3>
+                    <div id="family-messages">
+                        <!-- Messages will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- HR Dashboard -->
+        <div id="hr-dashboard" class="dashboard">
+            <div class="dashboard-header">
+                <div class="user-info">
+                    <h2>Analytics Dashboard</h2>
+                    <p>Jennifer Martinez • Director, Total Rewards • 2,847 employees</p>
+                </div>
+                <div class="dashboard-actions">
+                    <button class="btn btn-primary" onclick="exportReport()">📊 Export Report</button>
+                    <button class="btn btn-secondary" onclick="viewTrends()">📈 View Trends</button>
+                    <button class="btn btn-outline" onclick="switchRole()">↔️ Switch Role</button>
+                </div>
+            </div>
+            
+            <!-- Key Metrics -->
+            <div class="card" style="margin-bottom: var(--space-xl);">
+                <h3>📈 Program Performance Overview</h3>
+                <div class="grid-4">
+                    <div class="metric">
+                        <div class="metric-value">61.3%</div>
+                        <div class="metric-label">Enrollment Rate</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">187%</div>
+                        <div class="metric-label">ROI</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">$1.2M</div>
+                        <div class="metric-label">Annual Savings</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">6.7%</div>
+                        <div class="metric-label">Turnover Reduction</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid-2">
+                <!-- Enrollment Trends Chart -->
+                <div class="card">
+                    <h3>📊 Enrollment Trends</h3>
+                    <div class="chart-container">
+                        <canvas id="enrollmentChart"></canvas>
+                    </div>
+                </div>
+                
+                <!-- Feature Utilization -->
+                <div class="card">
+                    <h3>🔧 Feature Utilization</h3>
+                    <div class="chart-container">
+                        <canvas id="utilizationChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid-2" style="margin-top: var(--space-xl);">
+                <!-- Workforce Impact -->
+                <div class="card">
+                    <h3>👥 Workforce Impact</h3>
+                    <div class="grid-3">
+                        <div class="metric">
+                            <div class="metric-value">94.3%</div>
+                            <div class="metric-label">Management Retention</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">96.8%</div>
+                            <div class="metric-label">Caregiver Retention</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">23.4%</div>
+                            <div class="metric-label">Absenteeism Reduction</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Employee Satisfaction -->
+                <div class="card">
+                    <h3>😊 Employee Sentiment</h3>
+                    <div class="grid-3">
+                        <div class="metric">
+                            <div class="metric-value">4.6★</div>
+                            <div class="metric-label">Satisfaction Rating</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">82%</div>
+                            <div class="metric-label">Would Recommend</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">74</div>
+                            <div class="metric-label">NPS Score</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Calendar View -->
+        <div id="calendar-view" class="calendar-view">
+            <div class="calendar-header">
+                <div class="calendar-title">
+                    <h2>📅 Weekly Calendar</h2>
+                    <div class="week-display">October 14-20, 2025</div>
+                </div>
+                <div class="calendar-nav">
+                    <button class="btn btn-outline" onclick="goBackToDashboard()">← Back to Dashboard</button>
+                    <button class="btn btn-secondary" onclick="showPreviousWeek()">← Previous Week</button>
+                    <button class="btn btn-secondary" onclick="showNextWeek()">Next Week →</button>
+                </div>
+            </div>
+            
+            <!-- Calendar Integration Toolbar -->
+            <div class="calendar-toolbar">
+                <div class="toolbar-section">
+                    <h3>🔗 Calendar Integration</h3>
+                    <div class="integration-buttons">
+                        <button class="btn btn-integration" onclick="syncOutlook()" title="Export events to Microsoft Outlook Calendar">
+                            📧 <span>Sync with Outlook</span>
+                        </button>
+                        <button class="btn btn-integration" onclick="syncGoogleCalendar()" title="Export events to Google Calendar">
+                            📅 <span>Sync with Google Calendar</span>
+                        </button>
+                        <button class="btn btn-primary btn-add-event" onclick="openAddEventModal()" title="Create new calendar event">
+                            ➕ <span>Add Event</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="calendar-grid">
+                <!-- Frank Sr.'s Calendar -->
+                <div class="person-calendar">
+                    <div class="person-header">
+                        <span style="font-size: var(--font-size-2xl);">🏠</span>
+                        <h3>Frank Sr.</h3>
+                        <div class="person-role">Care Recipient</div>
+                    </div>
+                    <div id="frank-calendar-content">
+                        <!-- Frank's calendar content will be populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Michael's Calendar -->
+                <div class="person-calendar">
+                    <div class="person-header">
+                        <span style="font-size: var(--font-size-2xl);">👔</span>
+                        <h3>Michael</h3>
+                        <div class="person-role">Employee Caregiver</div>
+                    </div>
+                    <div id="michael-calendar-content">
+                        <!-- Michael's calendar content will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="calendar-legend">
+                <h3 style="margin-bottom: var(--space-lg); text-align: center;">📋 Event Categories</h3>
+                <div class="legend-grid">
+                    <div class="legend-item">
+                        <div class="legend-color caregiving"></div>
+                        <div class="legend-text">Caregiving &amp; Health</div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color work"></div>
+                        <div class="legend-text">Work Commitments</div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color personal"></div>
+                        <div class="legend-text">Personal Activities</div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color joint_activity"></div>
+                        <div class="legend-text">Joint Activities</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Edit Event Modal -->
+        <div id="edit-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>✏️ Edit Event</h3>
+                    <button class="close-btn" onclick="closeEditModal()" aria-label="Close">&times;</button>
+                </div>
+                <form id="edit-form">
+                    <div class="form-group">
+                        <label class="form-label" for="event-title">Event Title *</label>
+                        <input type="text" id="event-title" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="event-date">Date *</label>
+                        <input type="date" id="event-date" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="event-time">Time *</label>
+                        <input type="time" id="event-time" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="event-location">Location</label>
+                        <input type="text" id="event-location" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="event-type">Event Type *</label>
+                        <select id="event-type" class="form-control" required>
+                            <option value="caregiving">Caregiving &amp; Health</option>
+                            <option value="work">Work Commitments</option>
+                            <option value="personal">Personal Activities</option>
+                            <option value="joint_activity">Joint Activities</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="event-notes">Notes</label>
+                        <textarea id="event-notes" class="form-control textarea" rows="3"></textarea>
+                    </div>
+                </form>
+                <div class="modal-actions">
+                    <button class="btn btn-outline" onclick="closeEditModal()">Cancel</button>
+                    <button class="btn btn-primary" onclick="saveEvent()">💾 Save Changes</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Share Event Modal -->
+        <div id="share-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>🔗 Share Event</h3>
+                    <button class="close-btn" onclick="closeShareModal()" aria-label="Close">&times;</button>
+                </div>
+                <div id="share-event-details" style="background: var(--soft-gray); padding: var(--space-md); border-radius: var(--radius-md); margin-bottom: var(--space-lg);">
+                    <!-- Event details will be populated here -->
+                </div>
+                <div class="share-options">
+                    <div class="share-option" onclick="shareWithCareTeam()">
+                        <div class="share-option-icon">👥</div>
+                        <div class="share-option-text">Share with Care Team</div>
+                    </div>
+                    <div class="share-option" onclick="shareWithFamily()">
+                        <div class="share-option-icon">👨‍👩‍👧‍👦</div>
+                        <div class="share-option-text">Share with Family</div>
+                    </div>
+                    <div class="share-option" onclick="copyEventLink()">
+                        <div class="share-option-icon">📎</div>
+                        <div class="share-option-text">Copy Event Link</div>
+                    </div>
+                    <div class="share-option" onclick="sendEmailReminder()">
+                        <div class="share-option-icon">📧</div>
+                        <div class="share-option-text">Send Email Reminder</div>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button class="btn btn-outline" onclick="closeShareModal()">Close</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Order Something Modal -->
+        <div id="order-modal" class="modal">
+            <div class="modal-content order-modal-content">
+                <div class="modal-header">
+                    <h3>🛒 Order for Dad (Frank Sr.)</h3>
+                    <button class="close-btn" onclick="closeOrderModal()" aria-label="Close">&times;</button>
+                </div>
+                
+                <div class="modal-subtitle">
+                    Quick access to essential services
+                </div>
+                
+                <!-- Service Options -->
+                <div class="service-options">
+                    <!-- Amazon Section -->
+                    <div class="service-card amazon-card">
+                        <div class="service-header">
+                            <div class="service-logo amazon-logo">🅰️</div>
+                            <div class="service-info">
+                                <h4>Amazon</h4>
+                                <p>Medical Supplies &amp; Everyday Items</p>
+                            </div>
+                        </div>
+                        
+                        <div class="suggested-items">
+                            <h5>Suggested Items:</h5>
+                            <div class="item-tags">
+                                <span class="item-tag">💊 Pill Organizer (Weekly)</span>
+                                <span class="item-tag">🩺 Blood Pressure Monitor</span>
+                                <span class="item-tag">🦯 Mobility Aids</span>
+                                <span class="item-tag">🚨 Emergency Alert Device</span>
+                            </div>
+                        </div>
+                        
+                        <div class="recent-orders">
+                            <h5>Recent Orders:</h5>
+                            <div class="recent-item">💊 Weekly pill organizer - <button class="btn btn-sm btn-outline">Reorder</button></div>
+                            <div class="recent-item">🩺 Blood pressure cuff - <span class="status completed">Delivered last week</span></div>
+                        </div>
+                        
+                        <button class="btn btn-primary btn-punchout" onclick="punchoutToAmazon()">
+                            🔗 Punchout to Amazon
+                        </button>
+                    </div>
+                    
+                    <!-- Instacart Section -->
+                    <div class="service-card instacart-card">
+                        <div class="service-header">
+                            <div class="service-logo instacart-logo">🛒</div>
+                            <div class="service-info">
+                                <h4>Instacart</h4>
+                                <p>Groceries &amp; Fresh Food Delivery</p>
+                            </div>
+                        </div>
+                        
+                        <div class="suggested-items">
+                            <h5>Suggested Items:</h5>
+                            <div class="item-tags">
+                                <span class="item-tag">🛒 Dad's Usual Grocery List</span>
+                                <span class="item-tag">❤️ Heart-Healthy Options</span>
+                                <span class="item-tag">🍽️ Easy-Prep Meals</span>
+                                <span class="item-tag">🥬 Fresh Produce Selection</span>
+                            </div>
+                        </div>
+                        
+                        <div class="recent-orders">
+                            <h5>Recent Orders:</h5>
+                            <div class="recent-item">🛒 Weekly grocery delivery - <button class="btn btn-sm btn-outline">Reorder</button></div>
+                            <div class="recent-item">❤️ Heart-healthy meal kit - <span class="status completed">Last Tuesday</span></div>
+                        </div>
+                        
+                        <button class="btn btn-primary btn-punchout" onclick="punchoutToInstacart()">
+                            🔗 Punchout to Instacart
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Delivery Options -->
+                <div class="delivery-options">
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" checked id="deliver-to-dad">
+                            <span class="checkmark"></span>
+                            Deliver to Frank Sr.'s Address (123 Oak Street)
+                        </label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" checked id="notify-michael">
+                            <span class="checkmark"></span>
+                            Send delivery notification to Michael
+                        </label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" checked id="add-to-care-log">
+                            <span class="checkmark"></span>
+                            Add to Dad's care log
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Emergency Section -->
+                <div class="emergency-ordering-section">
+                    <h4>🚨 Emergency Medical Supplies</h4>
+                    <p>Urgent medical needs - Same day delivery</p>
+                    <div class="emergency-items">
+                        <button class="btn btn-emergency btn-sm">💊 Emergency medication refills</button>
+                        <button class="btn btn-emergency btn-sm">🩹 First aid supplies</button>
+                        <button class="btn btn-emergency btn-sm">🦯 Mobility assistance items</button>
+                    </div>
+                </div>
+                
+                <!-- Saved Lists -->
+                <div class="saved-lists-section">
+                    <h4>📋 Saved Shopping Lists</h4>
+                    <div class="saved-lists">
+                        <div class="saved-list-item">
+                            <div class="list-info">
+                                <strong>Dad's Weekly Essentials</strong>
+                                <span>15 items • Last ordered: Last Tuesday</span>
+                            </div>
+                            <button class="btn btn-outline btn-sm">📦 Order List</button>
+                        </div>
+                        
+                        <div class="saved-list-item">
+                            <div class="list-info">
+                                <strong>Medical Supplies</strong>
+                                <span>8 items • Last ordered: 2 weeks ago</span>
+                            </div>
+                            <button class="btn btn-outline btn-sm">📦 Order List</button>
+                        </div>
+                        
+                        <div class="saved-list-item">
+                            <div class="list-info">
+                                <strong>Heart-Healthy Groceries</strong>
+                                <span>12 items • Last ordered: Last Friday</span>
+                            </div>
+                            <button class="btn btn-outline btn-sm">📦 Order List</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Other Quick Action Modals -->
+        <div id="schedule-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>📅 Schedule for Dad (Frank Sr.)</h3>
+                    <button class="close-btn" onclick="closeScheduleModal()" aria-label="Close">&times;</button>
+                </div>
+                
+                <div class="quick-options">
+                    <button class="btn btn-outline btn-full-width" onclick="scheduleOption('doctor')">
+                        👩‍⚕️ Doctor Appointments
+                    </button>
+                    <button class="btn btn-outline btn-full-width" onclick="scheduleOption('health')">
+                        🏠 Home Health Services
+                    </button>
+                    <button class="btn btn-outline btn-full-width" onclick="scheduleOption('transport')">
+                        🚗 Transportation
+                    </button>
+                    <button class="btn btn-outline btn-full-width" onclick="scheduleOption('therapy')">
+                        🧘 Therapy Sessions
+                    </button>
+                    <button class="btn btn-outline btn-full-width" onclick="scheduleOption('social')">
+                        👥 Social Activities
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="send-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>📦 Send to Dad (Frank Sr.)</h3>
+                    <button class="close-btn" onclick="closeSendModal()" aria-label="Close">&times;</button>
+                </div>
+                
+                <div class="quick-options">
+                    <button class="btn btn-outline btn-full-width" onclick="sendOption('package')">
+                        📦 Care Package
+                    </button>
+                    <button class="btn btn-outline btn-full-width" onclick="sendOption('prescription')">
+                        💊 Prescription Delivery
+                    </button>
+                    <button class="btn btn-outline btn-full-width" onclick="sendOption('meal')">
+                        🍽️ Meal Delivery
+                    </button>
+                    <button class="btn btn-outline btn-full-width" onclick="sendOption('emergency')">
+                        🚨 Emergency Supplies
+                    </button>
+                    <button class="btn btn-outline btn-full-width" onclick="sendOption('personal')">
+                        👕 Personal Items
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="send-someone-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>👤 Arrange Visit for Dad</h3>
+                    <button class="close-btn" onclick="closeSendSomeoneModal()" aria-label="Close">&times;</button>
+                </div>
+                
+                <div class="quick-options">
+                    <button class="btn btn-outline btn-full-width" onclick="sendSomeoneOption('aide')">
+                        👩‍⚕️ Home Health Aide
+                    </button>
+                    <button class="btn btn-outline btn-full-width" onclick="sendSomeoneOption('family')">
+                        👨‍👩‍👧‍👦 Family Member
+                    </button>
+                    <button class="btn btn-outline btn-full-width" onclick="sendSomeoneOption('maintenance')">
+                        🔧 Maintenance/Repair
+                    </button>
+                    <button class="btn btn-outline btn-full-width" onclick="sendSomeoneOption('cleaning')">
+                        🧽 Cleaning Service
+                    </button>
+                    <button class="btn btn-outline btn-full-width" onclick="sendSomeoneOption('companion')">
+                        👥 Social Companion
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Add Event Modal -->
+        <div id="add-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>➕ Add New Event</h3>
+                    <button class="close-btn" onclick="closeAddModal()" aria-label="Close">&times;</button>
+                </div>
+                <form id="add-form">
+                    <div class="form-group">
+                        <label class="form-label" for="add-event-for">Create Event For *</label>
+                        <select id="add-event-for" class="form-control" required>
+                            <option value="frank">Frank Sr.</option>
+                            <option value="michael">Michael</option>
+                            <option value="both">Both (Joint Activity)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="add-event-title">Event Title *</label>
+                        <input type="text" id="add-event-title" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="add-event-date">Date *</label>
+                        <input type="date" id="add-event-date" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="add-event-time">Time *</label>
+                        <input type="time" id="add-event-time" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="add-event-location">Location</label>
+                        <input type="text" id="add-event-location" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="add-event-type">Event Type *</label>
+                        <select id="add-event-type" class="form-control" required>
+                            <option value="caregiving">Caregiving &amp; Health</option>
+                            <option value="work">Work Commitments</option>
+                            <option value="personal">Personal Activities</option>
+                            <option value="joint_activity">Joint Activities</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="add-event-notes">Notes</label>
+                        <textarea id="add-event-notes" class="form-control textarea" rows="3"></textarea>
+                    </div>
+                </form>
+                <div class="modal-actions">
+                    <button class="btn btn-outline" onclick="closeAddModal()">Cancel</button>
+                    <button class="btn btn-primary" onclick="addNewEvent()">➕ Add Event</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Application Data
+        const calendarData = {
+            current_week: "October 14-20, 2025",
+            frank_sr_schedule: {
+                monday: [
+                    {
+                        time: "Rest Day",
+                        event: "No scheduled activities",
+                        type: "personal",
+                        icon: "😌"
+                    }
+                ],
+                tuesday: [
+                    {
+                        time: "2:30 PM",
+                        event: "Cardiology Appointment",
+                        location: "Memorial Medical Center",
+                        type: "caregiving",
+                        icon: "👩‍⚕️",
+                        notes: "Follow-up for blood pressure monitoring"
+                    }
+                ],
+                wednesday: [
+                    {
+                        time: "10:00 AM - 1:00 PM",
+                        event: "Volunteering at Food Bank",
+                        location: "Community Food Bank",
+                        type: "joint_activity",
+                        icon: "🤝",
+                        with: "Michael",
+                        notes: "Weekly volunteer shift - sorting donations"
+                    }
+                ],
+                thursday: [
+                    {
+                        time: "6:00 PM",
+                        event: "Family Zoom Call",
+                        location: "Home",
+                        type: "personal",
+                        icon: "💻",
+                        notes: "Monthly call with grandchildren"
+                    }
+                ],
+                friday: [
+                    {
+                        time: "9:00 AM",
+                        event: "In-home Nurse Visit",
+                        location: "Home",
+                        type: "caregiving",
+                        icon: "👩‍⚕️",
+                        provider: "Maria Santos",
+                        notes: "Weekly health check and medication review"
+                    }
+                ],
+                saturday: [
+                    {
+                        time: "11:00 AM",
+                        event: "Physical Therapy",
+                        location: "Home",
+                        type: "caregiving",
+                        icon: "🏃",
+                        provider: "Rehab Specialists",
+                        notes: "Balance and strength exercises"
+                    }
+                ],
+                sunday: [
+                    {
+                        time: "11:00 AM",
+                        event: "Family Brunch",
+                        location: "Home",
+                        type: "personal",
+                        icon: "🍳",
+                        notes: "Weekly family gathering"
+                    }
+                ]
+            },
+            michael_schedule: {
+                monday: [
+                    {
+                        time: "10:00 AM",
+                        event: "Executive Team Meeting",
+                        location: "Acme Corp Office",
+                        type: "work",
+                        icon: "💼",
+                        notes: "Monthly leadership review"
+                    },
+                    {
+                        time: "4:00 PM",
+                        event: "Care Coordination Call",
+                        location: "Office/Phone",
+                        type: "caregiving",
+                        icon: "📞",
+                        notes: "Weekly check-in with Dad's care team"
+                    }
+                ],
+                tuesday: [
+                    {
+                        time: "9:00 AM",
+                        event: "Project Review Meeting",
+                        location: "Acme Corp Office",
+                        type: "work",
+                        icon: "📊",
+                        notes: "Q4 project status review"
+                    },
+                    {
+                        time: "2:30 PM",
+                        event: "Available for Dad's Appointment",
+                        location: "Flexible",
+                        type: "caregiving",
+                        icon: "🚗",
+                        notes: "On standby in case Dad needs transportation"
+                    }
+                ],
+                wednesday: [
+                    {
+                        time: "10:00 AM - 1:00 PM",
+                        event: "Volunteering with Dad",
+                        location: "Community Food Bank",
+                        type: "joint_activity",
+                        icon: "🤝",
+                        notes: "Quality time while giving back to community"
+                    },
+                    {
+                        time: "5:00 PM",
+                        event: "Project Deadline",
+                        location: "Office/Home",
+                        type: "work",
+                        icon: "⏰",
+                        notes: "Final deliverables due"
+                    }
+                ],
+                thursday: [
+                    {
+                        time: "All Day",
+                        event: "Working from Home",
+                        location: "Home",
+                        type: "work",
+                        icon: "🏠",
+                        notes: "Flexible schedule for Dad's needs"
+                    },
+                    {
+                        time: "2:00 PM",
+                        event: "Team Check-in (Virtual)",
+                        location: "Home Office",
+                        type: "work",
+                        icon: "💻",
+                        notes: "Weekly team status call"
+                    }
+                ],
+                friday: [
+                    {
+                        time: "11:00 AM",
+                        event: "Client Presentation",
+                        location: "Acme Corp Office",
+                        type: "work",
+                        icon: "👥",
+                        notes: "Q4 strategy presentation"
+                    },
+                    {
+                        time: "7:00 PM",
+                        event: "Dinner Out",
+                        location: "Downtown Restaurant",
+                        type: "personal",
+                        icon: "🍽️",
+                        notes: "Date night with spouse"
+                    }
+                ],
+                saturday: [
+                    {
+                        time: "9:00 AM",
+                        event: "Weekend Cycling",
+                        location: "River Trail",
+                        type: "personal",
+                        icon: "🚴",
+                        notes: "Personal fitness time"
+                    },
+                    {
+                        time: "11:00 AM",
+                        event: "Available for Dad's PT",
+                        location: "Flexible",
+                        type: "caregiving",
+                        icon: "🏃",
+                        notes: "Support during physical therapy session"
+                    }
+                ],
+                sunday: [
+                    {
+                        time: "11:00 AM",
+                        event: "Family Brunch",
+                        location: "Dad's House",
+                        type: "personal",
+                        icon: "🍳",
+                        notes: "Weekly family gathering with Dad"
+                    }
+                ]
+            }
+        };
+        
+        const appData = {
+            notifications: [
+                {
+                    id: 1,
+                    type: "urgent",
+                    title: "Medication Alert",
+                    message: "Frank Sr. missed morning medication check-in",
+                    time: "8:45 AM",
+                    icon: "💊",
+                    priority: "high"
+                },
+                {
+                    id: 2,
+                    type: "appointment", 
+                    title: "Doctor Appointment",
+                    message: "Cardiology appointment reminder - 2:30 PM today",
+                    time: "12:00 PM",
+                    icon: "👩‍⚕️",
+                    priority: "medium"
+                },
+                {
+                    id: 3,
+                    type: "work",
+                    title: "Schedule Update",
+                    message: "Meeting rescheduled due to care coordinator call",
+                    time: "11:30 AM",
+                    icon: "📅",
+                    priority: "low"
+                }
+            ],
+            
+            careTeam: [
+                {
+                    name: "Sarah Martinez",
+                    role: "Care Coordinator", 
+                    phone: "(555) 123-4567",
+                    status: "available",
+                    expertise: "Care planning and family support"
+                },
+                {
+                    name: "Dr. James Wilson",
+                    role: "Primary Care Physician",
+                    phone: "(555) 234-5678",
+                    status: "busy",
+                    expertise: "Geriatric medicine"
+                },
+                {
+                    name: "Maria Santos",
+                    role: "Home Health Aide",
+                    phone: "(555) 345-6789", 
+                    status: "with_patient",
+                    expertise: "Daily living assistance"
+                }
+            ],
+            
+            dailyChecklist: [
+                {
+                    task: "Morning medications",
+                    time: "8:00 AM",
+                    status: "missed",
+                    icon: "💊",
+                    importance: "critical"
+                },
+                {
+                    task: "Blood pressure reading",
+                    time: "9:30 AM",
+                    status: "completed", 
+                    icon: "🩺",
+                    value: "125/82"
+                },
+                {
+                    task: "Exercise walk",
+                    time: "11:00 AM",
+                    status: "upcoming",
+                    icon: "🚶",
+                    duration: "15 minutes"
+                },
+                {
+                    task: "Lunch",
+                    time: "12:30 PM", 
+                    status: "scheduled",
+                    icon: "🍽️",
+                    provider: "Meals on Wheels"
+                }
+            ],
+            
+            familyMessages: [
+                {
+                    from: "Michael",
+                    message: "Running a bit late today, but Sarah will be there at 2 PM",
+                    time: "1 hour ago",
+                    read: false
+                },
+                {
+                    from: "Care Team",
+                    message: "Great job with your exercises this week!",
+                    time: "2 hours ago", 
+                    read: true
+                },
+                {
+                    from: "Dr. Wilson",
+                    message: "Your blood pressure readings look excellent",
+                    time: "1 day ago",
+                    read: true
+                }
+            ]
+        };
+        
+        let currentRole = null;
+        let charts = {};
+        
+        // Role Selection
+        function selectRole(role) {
+            currentRole = role;
+            
+            // Hide role selection
+            document.getElementById('role-selection').style.display = 'none';
+            
+            // Show appropriate dashboard
+            document.querySelectorAll('.dashboard').forEach(d => d.classList.remove('active'));
+            document.getElementById(role + '-dashboard').classList.add('active');
+            
+            // Initialize dashboard content
+            initializeDashboard(role);
+            
+            // Show success message
+            showSuccessMessage(`Welcome! You are now viewing the ${role} dashboard.`);
+        }
+        
+        function switchRole() {
+            currentRole = null;
+            
+            // Show role selection
+            document.getElementById('role-selection').style.display = 'grid';
+            
+            // Hide all dashboards
+            document.querySelectorAll('.dashboard').forEach(d => d.classList.remove('active'));
+            
+            // Clear any existing charts
+            Object.values(charts).forEach(chart => {
+                if (chart) chart.destroy();
+            });
+            charts = {};
+        }
+        
+        // Dashboard Initialization
+        function initializeDashboard(role) {
+            switch(role) {
+                case 'employee':
+                    populateEmployeeNotifications();
+                    populateCareTeam();
+                    break;
+                case 'recipient':
+                    populateDailyChecklist();
+                    populateFamilyMessages();
+                    break;
+                case 'hr':
+                    initializeHRCharts();
+                    break;
+            }
+        }
+        
+        // Employee Dashboard Functions
+        function populateEmployeeNotifications() {
+            const container = document.getElementById('employee-notifications');
+            container.innerHTML = '';
+            
+            appData.notifications.forEach(notification => {
+                const notificationEl = document.createElement('div');
+                notificationEl.className = `notification ${notification.type}`;
+                notificationEl.innerHTML = `
+                    <div class="notification-icon">${notification.icon}</div>
+                    <div class="notification-content">
+                        <h4>${notification.title}</h4>
+                        <p>${notification.message}</p>
+                    </div>
+                    <div class="notification-time">${notification.time}</div>
+                `;
+                container.appendChild(notificationEl);
+            });
+        }
+        
+        function populateCareTeam() {
+            const container = document.getElementById('care-team');
+            container.innerHTML = '';
+            
+            appData.careTeam.forEach(member => {
+                const memberEl = document.createElement('div');
+                memberEl.className = 'contact-card';
+                memberEl.innerHTML = `
+                    <div class="contact-info">
+                        <h4>${member.name}</h4>
+                        <p>${member.role} • ${member.expertise}</p>
+                    </div>
+                    <div class="contact-status ${member.status}">${member.status.replace('_', ' ')}</div>
+                    <button class="btn btn-primary" onclick="callContact('${member.name}', '${member.phone}')">
+                        📞 Call
+                    </button>
+                `;
+                container.appendChild(memberEl);
+            });
+        }
+        
+        // Care Recipient Dashboard Functions
+        function populateDailyChecklist() {
+            const container = document.getElementById('daily-checklist');
+            container.innerHTML = '';
+            
+            appData.dailyChecklist.forEach(item => {
+                const itemEl = document.createElement('div');
+                itemEl.className = 'checklist-item';
+                itemEl.innerHTML = `
+                    <div class="checklist-icon">${item.icon}</div>
+                    <div class="checklist-content">
+                        <h4>${item.task}</h4>
+                        <p>${item.value || item.duration || item.provider || 'Ready when you are'}</p>
+                    </div>
+                    <div class="status ${item.status}">
+                        ${item.status === 'missed' ? '❌ Missed' : 
+                          item.status === 'completed' ? '✅ Done' : 
+                          item.status === 'upcoming' ? '⏰ Soon' : '📅 Scheduled'}
+                    </div>
+                    <div class="checklist-time">${item.time}</div>
+                `;
+                container.appendChild(itemEl);
+            });
+        }
+        
+        function populateFamilyMessages() {
+            const container = document.getElementById('family-messages');
+            container.innerHTML = '';
+            
+            appData.familyMessages.forEach(message => {
+                const messageEl = document.createElement('div');
+                messageEl.className = `notification ${message.read ? '' : 'urgent'}`;
+                messageEl.innerHTML = `
+                    <div class="notification-icon">
+                        ${message.from === 'Michael' ? '👨‍💼' : 
+                          message.from === 'Care Team' ? '👥' : '👩‍⚕️'}
+                    </div>
+                    <div class="notification-content">
+                        <h4>From ${message.from}</h4>
+                        <p>${message.message}</p>
+                    </div>
+                    <div class="notification-time">${message.time}</div>
+                `;
+                container.appendChild(messageEl);
+            });
+        }
+        
+        // HR Dashboard Functions
+        function initializeHRCharts() {
+            // Enrollment Trends Chart
+            const enrollmentCtx = document.getElementById('enrollmentChart').getContext('2d');
+            charts.enrollment = new Chart(enrollmentCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+                    datasets: [{
+                        label: 'Enrollment Rate (%)',
+                        data: [45, 48, 52, 55, 57, 58, 59, 60, 61, 61.3],
+                        borderColor: '#7FB069',
+                        backgroundColor: 'rgba(127, 176, 105, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 70
+                        }
+                    }
+                }
+            });
+            
+            // Feature Utilization Chart
+            const utilizationCtx = document.getElementById('utilizationChart').getContext('2d');
+            charts.utilization = new Chart(utilizationCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Work Flexibility', 'Care Coordination', 'Health Monitoring', 'Family Communication', 'Emergency Response'],
+                    datasets: [{
+                        data: [89, 78, 72, 67, 45],
+                        backgroundColor: ['#1FB8CD', '#FFC185', '#B4413C', '#ECEBD5', '#5D878F'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                usePointStyle: true,
+                                padding: 15
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Utility Functions
+        function callContact(name, phone) {
+            if (confirm(`Call ${name} at ${phone}?`)) {
+                showSuccessMessage(`Calling ${name}... In a real app, this would initiate the call.`);
+            }
+        }
+        
+        function callEmergency() {
+            if (confirm('Call Emergency Services (911)?')) {
+                showSuccessMessage('Calling 911... Emergency services have been contacted.');
+            }
+        }
+        
+        function showSection(section) {
+            showSuccessMessage(`${section.replace('-', ' ')} section would open in a real app.`);
+        }
+        
+        // Calendar Functions
+        function showCalendar() {
+            // Hide all dashboards
+            document.querySelectorAll('.dashboard').forEach(d => d.classList.remove('active'));
+            
+            // Show calendar view
+            document.getElementById('calendar-view').classList.add('active');
+            
+            // Populate calendar content
+            populateCalendar();
+            
+            showSuccessMessage('Calendar loaded! View both schedules side by side.');
+        }
+        
+        function goBackToDashboard() {
+            // Hide calendar view
+            document.getElementById('calendar-view').classList.remove('active');
+            
+            // Show appropriate dashboard based on current role
+            if (currentRole) {
+                document.getElementById(currentRole + '-dashboard').classList.add('active');
+            } else {
+                // If no role selected, show role selection
+                document.getElementById('role-selection').style.display = 'grid';
+            }
+            
+            showSuccessMessage('Returned to dashboard.');
+        }
+        
+        function showPreviousWeek() {
+            showSuccessMessage('Previous week view would be loaded.');
+        }
+        
+        function showNextWeek() {
+            showSuccessMessage('Next week view would be loaded.');
+        }
+        
+        function populateCalendar() {
+            populateFrankCalendar();
+            populateMichaelCalendar();
+        }
+        
+        function populateFrankCalendar() {
+            const container = document.getElementById('frank-calendar-content');
+            const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+            const dayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+            const dates = ['Oct 14', 'Oct 15', 'Oct 16', 'Oct 17', 'Oct 18', 'Oct 19', 'Oct 20'];
+            
+            let html = '';
+            
+            days.forEach((day, index) => {
+                const dayEvents = calendarData.frank_sr_schedule[day];
+                const dayName = dayNames[index];
+                const date = dates[index];
+                
+                html += `
+                    <div class="day-section">
+                        <div class="day-header">
+                            ${dayName}
+                            <span class="day-date">${date}</span>
+                        </div>
+                `;
+                
+                if (dayEvents.length > 0 && dayEvents[0].event === "No scheduled activities") {
+                    html += `<div class="rest-day">😌 Rest Day - No scheduled activities</div>`;
+                } else {
+                    dayEvents.forEach((event, eventIndex) => {
+                        html += createEventHTML(event, eventIndex, day, 'frank');
+                    });
+                }
+                
+                html += `</div>`;
+            });
+            
+            container.innerHTML = html;
+        }
+        
+        function populateMichaelCalendar() {
+            const container = document.getElementById('michael-calendar-content');
+            const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+            const dayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+            const dates = ['Oct 14', 'Oct 15', 'Oct 16', 'Oct 17', 'Oct 18', 'Oct 19', 'Oct 20'];
+            
+            let html = '';
+            
+            days.forEach((day, index) => {
+                const dayEvents = calendarData.michael_schedule[day];
+                const dayName = dayNames[index];
+                const date = dates[index];
+                
+                html += `
+                    <div class="day-section">
+                        <div class="day-header">
+                            ${dayName}
+                            <span class="day-date">${date}</span>
+                        </div>
+                `;
+                
+                if (dayEvents.length === 0) {
+                    html += `<div class="rest-day">📅 No scheduled events</div>`;
+                } else {
+                    dayEvents.forEach((event, eventIndex) => {
+                        html += createEventHTML(event, eventIndex, day, 'michael');
+                    });
+                }
+                
+                html += `</div>`;
+            });
+            
+            container.innerHTML = html;
+        }
+        
+        function createEventHTML(event) {
+            const detailsText = [];
+            if (event.location) detailsText.push(event.location);
+            if (event.provider) detailsText.push(`Provider: ${event.provider}`);
+            if (event.with) detailsText.push(`With: ${event.with}`);
+            if (event.notes) detailsText.push(event.notes);
+            
+            return `
+                <div class="event ${event.type}" onclick="showEventDetails('${event.event}', '${event.time}', '${detailsText.join(' • ')}')" tabindex="0" onkeypress="if(event.key==='Enter') showEventDetails('${event.event}', '${event.time}', '${detailsText.join(' • ')}')">  
+                    <div class="event-header">
+                        <span class="event-icon">${event.icon}</span>
+                        <span class="event-time">${event.time}</span>
+                    </div>
+                    <div class="event-title">${event.event}</div>
+                    ${event.location ? `<div class="event-location">📍 ${event.location}</div>` : ''}
+                    ${event.notes ? `<div class="event-details">${event.notes}</div>` : ''}
+                </div>
+            `;
+        }
+        
+        function showEventDetails(title, time, details) {
+            const message = `Event: ${title}\nTime: ${time}\nDetails: ${details}`;
+            alert(message);
+        }
+        
+        function viewHealthChecklist() {
+            showSuccessMessage('Health checklist updated! Great job staying on track.');
+        }
+        
+        function exportReport() {
+            showSuccessMessage('Report exported successfully! Check your downloads folder.');
+        }
+        
+        function viewTrends() {
+            showSuccessMessage('Trend analysis view would open with detailed insights.');
+        }
+        
+        function showSuccessMessage(message) {
+            // Remove existing messages
+            const existing = document.querySelectorAll('.success-message');
+            existing.forEach(msg => msg.remove());
+            
+            // Create new message
+            const messageEl = document.createElement('div');
+            messageEl.className = 'success-message';
+            messageEl.textContent = message;
+            
+            // Add to current dashboard
+            const activeDashboard = document.querySelector('.dashboard.active');
+            if (activeDashboard) {
+                activeDashboard.insertBefore(messageEl, activeDashboard.firstChild);
+            } else {
+                document.querySelector('.container').insertBefore(messageEl, document.querySelector('.role-selection'));
+            }
+            
+            // Remove after 4 seconds
+            setTimeout(() => {
+                if (messageEl.parentNode) {
+                    messageEl.remove();
+                }
+            }, 4000);
+        }
+        
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Dwel Caregiving Platform initialized');
+        });
+        
+        // Calendar Integration Functions
+        function syncOutlook() {
+            showSuccessMessage('🔄 Syncing with Microsoft Outlook... Events will be exported to your Outlook calendar.');
+            // Simulate sync process
+            setTimeout(() => {
+                showSuccessMessage('✅ Successfully synced with Microsoft Outlook! Check your calendar.');
+            }, 2000);
+        }
+        
+        function syncGoogleCalendar() {
+            showSuccessMessage('🔄 Syncing with Google Calendar... Events will be exported to your Google calendar.');
+            // Simulate sync process
+            setTimeout(() => {
+                showSuccessMessage('✅ Successfully synced with Google Calendar! Check your calendar.');
+            }, 2000);
+        }
+        
+        // Modal Management Functions
+        let currentEditingEvent = null;
+        let currentSharingEvent = null;
+        
+        function openEditModal(event, eventId) {
+            event.stopPropagation();
+            currentEditingEvent = eventId;
+            
+            // Get event data from the DOM or calendar data
+            const eventElement = document.querySelector(`[data-event-id="${eventId}"]`);
+            const eventTitle = eventElement.querySelector('.event-title').textContent;
+            const eventTime = eventElement.querySelector('.event-time').textContent;
+            const eventLocation = eventElement.querySelector('.event-location')?.textContent.replace('📍 ', '') || '';
+            const eventType = eventElement.classList.contains('caregiving') ? 'caregiving' : 
+                             eventElement.classList.contains('work') ? 'work' : 
+                             eventElement.classList.contains('joint_activity') ? 'joint_activity' : 'personal';
+            
+            // Populate form
+            document.getElementById('event-title').value = eventTitle;
+            document.getElementById('event-date').value = '2025-10-15'; // Default date
+            document.getElementById('event-time').value = '09:00'; // Default time
+            document.getElementById('event-location').value = eventLocation;
+            document.getElementById('event-type').value = eventType;
+            document.getElementById('event-notes').value = '';
+            
+            document.getElementById('edit-modal').classList.add('active');
+        }
+        
+        function closeEditModal() {
+            document.getElementById('edit-modal').classList.remove('active');
+            currentEditingEvent = null;
+        }
+        
+        function saveEvent() {
+            const title = document.getElementById('event-title').value;
+            const date = document.getElementById('event-date').value;
+            const time = document.getElementById('event-time').value;
+            const location = document.getElementById('event-location').value;
+            const type = document.getElementById('event-type').value;
+            const notes = document.getElementById('event-notes').value;
+            
+            if (!title || !date || !time || !type) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            showSuccessMessage(`✅ Event "${title}" has been updated successfully!`);
+            closeEditModal();
+            
+            // In a real app, this would update the calendar data and refresh the view
+            setTimeout(() => {
+                showSuccessMessage('📅 Calendar has been refreshed with your changes.');
+            }, 1500);
+        }
+        
+        function openShareModal(event, eventId) {
+            event.stopPropagation();
+            currentSharingEvent = eventId;
+            
+            // Get event data
+            const eventElement = document.querySelector(`[data-event-id="${eventId}"]`);
+            const eventTitle = eventElement.querySelector('.event-title').textContent;
+            const eventTime = eventElement.querySelector('.event-time').textContent;
+            const eventLocation = eventElement.querySelector('.event-location')?.textContent || '';
+            
+            // Populate share details
+            document.getElementById('share-event-details').innerHTML = `
+                <h4 style="margin: 0 0 var(--space-sm) 0; color: var(--deep-blue);">📅 ${eventTitle}</h4>
+                <p style="margin: 0; color: var(--neutral-gray);">⏰ ${eventTime}</p>
+                ${eventLocation ? `<p style="margin: 0; color: var(--neutral-gray);">${eventLocation}</p>` : ''}
+            `;
+            
+            document.getElementById('share-modal').classList.add('active');
+        }
+        
+        function closeShareModal() {
+            document.getElementById('share-modal').classList.remove('active');
+            currentSharingEvent = null;
+        }
+        
+        function shareWithCareTeam() {
+            showSuccessMessage('👥 Event has been shared with the care team. They will receive notifications.');
+            closeShareModal();
+        }
+        
+        function shareWithFamily() {
+            showSuccessMessage('👨‍👩‍👧‍👦 Event has been shared with family members. They will be notified.');
+            closeShareModal();
+        }
+        
+        function copyEventLink() {
+            // Simulate copying to clipboard
+            showSuccessMessage('📎 Event link copied to clipboard! You can now paste it anywhere.');
+            closeShareModal();
+        }
+        
+        function sendEmailReminder() {
+            showSuccessMessage('📧 Email reminders have been sent to all participants.');
+            closeShareModal();
+        }
+        
+        // Add Event Functions
+        function openAddEventModal() {
+            // Reset form
+            document.getElementById('add-form').reset();
+            document.getElementById('add-event-date').value = '2025-10-15'; // Default to current week
+            document.getElementById('add-modal').classList.add('active');
+        }
+        
+        function closeAddModal() {
+            document.getElementById('add-modal').classList.remove('active');
+        }
+        
+        function addNewEvent() {
+            const eventFor = document.getElementById('add-event-for').value;
+            const title = document.getElementById('add-event-title').value;
+            const date = document.getElementById('add-event-date').value;
+            const time = document.getElementById('add-event-time').value;
+            const location = document.getElementById('add-event-location').value;
+            const type = document.getElementById('add-event-type').value;
+            const notes = document.getElementById('add-event-notes').value;
+            
+            if (!eventFor || !title || !date || !time || !type) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            const personName = eventFor === 'frank' ? 'Frank Sr.' : eventFor === 'michael' ? 'Michael' : 'both participants';
+            showSuccessMessage(`✅ New event "${title}" has been added to ${personName}'s calendar!`);
+            closeAddModal();
+            
+            // In a real app, this would add the event to the calendar data and refresh the view
+            setTimeout(() => {
+                showSuccessMessage('📅 Calendar has been updated with the new event.');
+            }, 1500);
+        }
+        
+        // Modal click outside to close
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal')) {
+                if (e.target.id === 'edit-modal') closeEditModal();
+                if (e.target.id === 'share-modal') closeShareModal();
+                if (e.target.id === 'add-modal') closeAddModal();
+            }
+        });
+        
+        // Keyboard navigation for modals
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const activeModal = document.querySelector('.modal.active');
+                if (activeModal) {
+                    if (activeModal.id === 'edit-modal') closeEditModal();
+                    if (activeModal.id === 'share-modal') closeShareModal();
+                    if (activeModal.id === 'add-modal') closeAddModal();
+                }
+            }
+        });
+        
+        // Quick Actions Modal Functions
+        function openScheduleModal() {
+            document.getElementById('schedule-modal').classList.add('active');
+        }
+        
+        function closeScheduleModal() {
+            document.getElementById('schedule-modal').classList.remove('active');
+        }
+        
+        function openOrderModal() {
+            document.getElementById('order-modal').classList.add('active');
+        }
+        
+        function closeOrderModal() {
+            document.getElementById('order-modal').classList.remove('active');
+        }
+        
+        function openSendModal() {
+            document.getElementById('send-modal').classList.add('active');
+        }
+        
+        function closeSendModal() {
+            document.getElementById('send-modal').classList.remove('active');
+        }
+        
+        function openSendSomeoneModal() {
+            document.getElementById('send-someone-modal').classList.add('active');
+        }
+        
+        function closeSendSomeoneModal() {
+            document.getElementById('send-someone-modal').classList.remove('active');
+        }
+        
+        // Punchout Functions
+        function punchoutToAmazon() {
+            // Log the action in care coordination
+            showSuccessMessage('🔗 Opening Amazon in new tab... Action logged in care coordination.');
+            
+            // Track usage for platform analytics
+            console.log('Punchout to Amazon - User: Michael, Care Recipient: Frank Sr., Timestamp:', new Date());
+            
+            // Open Amazon in new tab
+            window.open('https://amazon.com', '_blank');
+            
+            // Close modal after brief delay
+            setTimeout(() => {
+                closeOrderModal();
+            }, 1500);
+        }
+        
+        function punchoutToInstacart() {
+            // Log the action in care coordination
+            showSuccessMessage('🔗 Opening Instacart in new tab... Action logged in care coordination.');
+            
+            // Track usage for platform analytics
+            console.log('Punchout to Instacart - User: Michael, Care Recipient: Frank Sr., Timestamp:', new Date());
+            
+            // Open Instacart in new tab
+            window.open('https://instacart.com', '_blank');
+            
+            // Close modal after brief delay
+            setTimeout(() => {
+                closeOrderModal();
+            }, 1500);
+        }
+        
+        // Quick Action Option Handlers
+        function scheduleOption(type) {
+            const options = {
+                'doctor': 'Doctor Appointments',
+                'health': 'Home Health Services', 
+                'transport': 'Transportation',
+                'therapy': 'Therapy Sessions',
+                'social': 'Social Activities'
+            };
+            
+            showSuccessMessage(`📅 ${options[type]} scheduling opened! This would connect to the enhanced calendar system.`);
+            closeScheduleModal();
+            
+            // Log action
+            console.log('Schedule action:', type, 'for Frank Sr. by Michael');
+        }
+        
+        function sendOption(type) {
+            const options = {
+                'package': 'Care Package',
+                'prescription': 'Prescription Delivery',
+                'meal': 'Meal Delivery',
+                'emergency': 'Emergency Supplies',
+                'personal': 'Personal Items'
+            };
+            
+            showSuccessMessage(`📦 ${options[type]} delivery arranged! Frank Sr. will be notified of the shipment.`);
+            closeSendModal();
+            
+            // Log action
+            console.log('Send action:', type, 'to Frank Sr. arranged by Michael');
+        }
+        
+        function sendSomeoneOption(type) {
+            const options = {
+                'aide': 'Home Health Aide',
+                'family': 'Family Member Visit',
+                'maintenance': 'Maintenance/Repair Service',
+                'cleaning': 'Cleaning Service',
+                'companion': 'Social Companion'
+            };
+            
+            showSuccessMessage(`👤 ${options[type]} visit arranged! Care team will coordinate the appointment.`);
+            closeSendSomeoneModal();
+            
+            // Log action
+            console.log('Send Someone action:', type, 'for Frank Sr. arranged by Michael');
+        }
+        
+        // Modal click outside to close - Updated to include new modals
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal')) {
+                if (e.target.id === 'edit-modal') closeEditModal();
+                if (e.target.id === 'share-modal') closeShareModal();
+                if (e.target.id === 'add-modal') closeAddModal();
+                if (e.target.id === 'order-modal') closeOrderModal();
+                if (e.target.id === 'schedule-modal') closeScheduleModal();
+                if (e.target.id === 'send-modal') closeSendModal();
+                if (e.target.id === 'send-someone-modal') closeSendSomeoneModal();
+            }
+        });
+        
+        // Keyboard navigation for modals - Updated
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const activeModal = document.querySelector('.modal.active');
+                if (activeModal) {
+                    if (activeModal.id === 'edit-modal') closeEditModal();
+                    if (activeModal.id === 'share-modal') closeShareModal();
+                    if (activeModal.id === 'add-modal') closeAddModal();
+                    if (activeModal.id === 'order-modal') closeOrderModal();
+                    if (activeModal.id === 'schedule-modal') closeScheduleModal();
+                    if (activeModal.id === 'send-modal') closeSendModal();
+                    if (activeModal.id === 'send-someone-modal') closeSendSomeoneModal();
+                }
+            }
+        });
+        
+        // Real-time updates simulation
+        setInterval(() => {
+            if (currentRole === 'employee') {
+                // Simulate notification updates
+                const notifications = document.querySelectorAll('.notification');
+                if (notifications.length > 0) {
+                    const randomNotification = notifications[Math.floor(Math.random() * notifications.length)];
+                    randomNotification.style.backgroundColor = 'rgba(127, 176, 105, 0.1)';
+                    setTimeout(() => {
+                        randomNotification.style.backgroundColor = '';
+                    }, 2000);
+                }
+            }
+        }, 10000);
+    </script>
+</body>
+</html>

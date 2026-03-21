@@ -1,0 +1,20 @@
+- Remote health monitoring (vitals, weight, activity)
+- Medication reminders & smart dispensers
+- Fall detection & emergency alerts
+- Virtual doctor visits (telehealth)
+- Automated meal delivery & nutrition tracking
+- Smart home safety (fire, water leak, carbon monoxide)
+- Intelligent lighting and climate control
+- Dementia support tools (wandering alerts)
+- Social engagement apps & video calling
+- Transportation coordination (rideshare, community shuttle)
+- Errand and grocery delivery management
+- Personal hygiene monitoring & assistance
+- Physical therapy & wellness reminders
+- Smart doorbells/cameras for security & visitor management
+- Caregiver scheduling & task orchestration
+- Family dashboard & activity alerts
+- Voice assistant for daily tasks & companionship
+- Automated prescription refill & pharmacy integration
+- Behavior/mood monitoring (AI analytics)
+- Pet care coordination (feeding reminders, sitter scheduling)

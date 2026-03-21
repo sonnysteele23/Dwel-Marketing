@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dwel.digital - Investor Pitch Deck</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="pitch-deck">
+        <!-- Navigation Controls -->
+        <div class="navigation-controls">
+            <button class="nav-btn prev-btn" id="prevBtn">‹</button>
+            <div class="slide-counter">
+                <span id="currentSlide">1</span> / <span id="totalSlides">16</span>
+            </div>
+            <button class="nav-btn next-btn" id="nextBtn">›</button>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <!-- Slides Container -->
+        <div class="slides-container" id="slidesContainer">
+            
+            <!-- Slide 1: Title -->
+            <div class="slide active" data-slide="1">
+                <div class="slide-content title-slide">
+                    <h1>Dwel.digital</h1>
+                    <h2>"Home is at the Heart of where Care Belongs"</h2>
+                    <div class="taglines">
+                        <p class="tagline">"AI for independence, peace of mind for families."</p>
+                        <p class="tagline">"Supporting care, sustaining work."</p>
+                    </div>
+                    <div class="title-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">94%</div>
+                            <div class="stat-label">of seniors wish to age in place</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">$2T+</div>
+                            <div class="stat-label">Annual addressable market</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">146+</div>
+                            <div class="stat-label">Care tasks managed by AI</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: Massive Disruption Creates Massive Opportunities -->
+            <div class="slide" data-slide="2">
+                <div class="slide-content">
+                    <h1>Massive Disruption Creates Massive Opportunities</h1>
+                    <div class="disruption-content">
+                        <div class="disruption-grid">
+                            <div class="disruption-item primary">
+                                <div class="disruption-icon">👥</div>
+                                <h3>Changing Demographics</h3>
+                                <p>Aging in Place trend driving massive market shift</p>
+                            </div>
+                            <div class="disruption-item">
+                                <div class="disruption-icon">👨‍👩‍👧‍👦</div>
+                                <h3>75+M Caretakers Affected</h3>
+                                <p>Significant burden on families and workforce</p>
+                            </div>
+                            <div class="disruption-item">
+                                <div class="disruption-icon">📉</div>
+                                <h3>Lost Productivity</h3>
+                                <p>Early resignations of key managers</p>
+                            </div>
+                            <div class="disruption-item critical">
+                                <div class="disruption-icon">❌</div>
+                                <h3>No Solution Exists Today</h3>
+                                <p>Gap in comprehensive aging-in-place platform</p>
+                            </div>
+                        </div>
+                        <div class="opportunity-highlight">
+                            <div class="opportunity-card">
+                                <div class="opportunity-icon">🚀</div>
+                                <h3>Corporate Benefits Subscription Model</h3>
+                                <p>Creates significant upside for scalable growth</p>
+                                <div class="market-size">Unprecedented Market Opportunity</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: Global Life Span Dramatically Increasing -->
+            <div class="slide" data-slide="3">
+                <div class="slide-content">
+                    <h1>Global Life Span Dramatically Increasing</h1>
+                    <div class="lifespan-content">
+                        <div class="demographic-stats">
+                            <div class="demo-stat-card highlight">
+                                <div class="demo-number">+1B</div>
+                                <div class="demo-label">60+ Population</div>
+                                <div class="demo-detail">Growing at 5X the rate of total world population</div>
+                            </div>
+                            <div class="demo-stat-card">
+                                <div class="demo-number">1 in 6</div>
+                                <div class="demo-label">People in US are 65+</div>
+                                <div class="demo-detail">(vs 1 in 20 in 1920)</div>
+                            </div>
+                            <div class="demo-stat-card">
+                                <div class="demo-number">161M</div>
+                                <div class="demo-label">By 2050</div>
+                                <div class="demo-detail">63% increase over 2010</div>
+                            </div>
+                            <div class="demo-stat-card">
+                                <div class="demo-number">Even Chance</div>
+                                <div class="demo-label">60 years old in US</div>
+                                <div class="demo-detail">Living to 90 years old</div>
+                            </div>
+                        </div>
+                        <div class="centenarian-growth">
+                            <h3>Centenarian Population Explosion</h3>
+                            <div class="growth-comparison">
+                                <div class="growth-item past">
+                                    <div class="growth-year">1965</div>
+                                    <div class="growth-count">20,000</div>
+                                    <div class="growth-label">Centenarians</div>
+                                </div>
+                                <div class="growth-arrow">→</div>
+                                <div class="growth-item current">
+                                    <div class="growth-year">Today</div>
+                                    <div class="growth-count">500,000+</div>
+                                    <div class="growth-label">Centenarians</div>
+                                </div>
+                            </div>
+                            <div class="growth-multiplier">25x Growth in Centenarian Population</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4: Driving Aging in Place & Significant Burden -->
+            <div class="slide" data-slide="4">
+                <div class="slide-content">
+                    <h1>Driving Aging in Place & Significant Burden</h1>
+                    <div class="aging-burden-content">
+                        <div class="key-statistics">
+                            <div class="stat-large primary">
+                                <div class="stat-number">94%</div>
+                                <div class="stat-description">
+                                    <h3>US 65+ live in independent housing</h3>
+                                    <p>Wish to age in place in their own homes</p>
+                                </div>
+                            </div>
+                            <div class="stat-large">
+                                <div class="stat-number">73%</div>
+                                <div class="stat-description">
+                                    <h3>US adults are primary caregivers</h3>
+                                    <p>For aging parents, creating family strain</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="driving-factors">
+                            <h3>Key Driving Factors</h3>
+                            <div class="factors-grid">
+                                <div class="factor-item">
+                                    <div class="factor-icon">🏠</div>
+                                    <h4>Personal Independence</h4>
+                                    <p>Maintain autonomy and familiar environment</p>
+                                </div>
+                                <div class="factor-item">
+                                    <div class="factor-icon">❤️</div>
+                                    <h4>Quality of Life</h4>
+                                    <p>Stay connected to community and family</p>
+                                </div>
+                                <div class="factor-item">
+                                    <div class="factor-icon">💰</div>
+                                    <h4>Cost Factors</h4>
+                                    <p>Significantly lower than institutional care</p>
+                                </div>
+                                <div class="factor-item critical">
+                                    <div class="factor-icon">🏥</div>
+                                    <h4>Health & Safety</h4>
+                                    <p>0.5% of population = 15% of COVID deaths</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 5: Lost Productivity + Early Resignations -->
+            <div class="slide" data-slide="5">
+                <div class="slide-content">
+                    <h1>Lost Productivity + Early Resignations</h1>
+                    <div class="productivity-impact">
+                        <div class="impact-stats">
+                            <div class="impact-stat critical">
+                                <div class="impact-icon">⚡</div>
+                                <div class="impact-data">
+                                    <div class="impact-number">80%</div>
+                                    <div class="impact-label">Confirm caregiving impacted productivity</div>
+                                </div>
+                            </div>
+                            <div class="impact-stat">
+                                <div class="impact-icon">👔</div>
+                                <div class="impact-data">
+                                    <div class="impact-number">35%</div>
+                                    <div class="impact-label">At peak careers (50-64) resign early</div>
+                                </div>
+                            </div>
+                            <div class="impact-stat">
+                                <div class="impact-icon">📱</div>
+                                <div class="impact-data">
+                                    <div class="impact-number">90%</div>
+                                    <div class="impact-label">Adults 50+ use tech to stay connected</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="workforce-pressure">
+                            <h3>Huge Pressure on Employees</h3>
+                            <div class="pressure-description">
+                                <p>Employees face overwhelming burden balancing work responsibilities with caretaking duties for aging parents</p>
+                            </div>
+                        </div>
+                        <div class="tech-fragmentation">
+                            <h3>Current Problem: Fragmented Technology</h3>
+                            <div class="fragmentation-impact">
+                                <div class="frag-item">
+                                    <span class="frag-icon">📈</span>
+                                    <span>Higher costs</span>
+                                </div>
+                                <div class="frag-item">
+                                    <span class="frag-icon">😰</span>
+                                    <span>Overwhelming burden</span>
+                                </div>
+                                <div class="frag-item">
+                                    <span class="frag-icon">🔗</span>
+                                    <span>Disconnected systems</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 6: Mission & Vision -->
+            <div class="slide" data-slide="6">
+                <div class="slide-content">
+                    <h1>Mission & Vision</h1>
+                    <div class="mission-vision-content">
+                        <div class="mission-statement">
+                            <h3>Our Mission</h3>
+                            <p>Enabling older adults to dwell safely and confidently at home through intelligent technology that reduces caregiver burden and helps employers foster healthier, more productive teams.</p>
+                        </div>
+                        <div class="vision-statement">
+                            <h3>Our Vision</h3>
+                            <p>Empower every aging adult to thrive safely at home, while supporting caregivers and working families through seamless technology and compassionate services.</p>
+                        </div>
+                        <div class="values-showcase">
+                            <div class="value-pillar">
+                                <div class="pillar-icon">🏠</div>
+                                <h4>Home-Centered Care</h4>
+                                <p>Technology that transforms homes into wellness centers</p>
+                            </div>
+                            <div class="value-pillar">
+                                <div class="pillar-icon">🤖</div>
+                                <h4>AI-Powered Intelligence</h4>
+                                <p>Smart orchestration preventing emergencies</p>
+                            </div>
+                            <div class="value-pillar">
+                                <div class="pillar-icon">👨‍👩‍👧‍👦</div>
+                                <h4>Family Connection</h4>
+                                <p>Keeping families informed and engaged</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 7: Initial Market Opportunity -->
+            <div class="slide" data-slide="7">
+                <div class="slide-content">
+                    <h1>Initial Market Opportunity</h1>
+                    <div class="market-opportunity">
+                        <div class="market-segments">
+                            <div class="market-segment large">
+                                <h3>IoT Healthcare Market</h3>
+                                <div class="market-growth">
+                                    <div class="growth-timeline">
+                                        <div class="timeline-point">
+                                            <div class="year">2024</div>
+                                            <div class="value">$175B</div>
+                                        </div>
+                                        <div class="growth-arrow">→</div>
+                                        <div class="timeline-point">
+                                            <div class="year">2032</div>
+                                            <div class="value">$822B</div>
+                                        </div>
+                                    </div>
+                                    <div class="cagr-badge">CAGR 21.3%</div>
+                                </div>
+                            </div>
+                            <div class="market-segment">
+                                <h3>Senior Care Products</h3>
+                                <div class="market-growth">
+                                    <div class="growth-timeline">
+                                        <div class="timeline-point">
+                                            <div class="year">2025</div>
+                                            <div class="value">$312.4B</div>
+                                        </div>
+                                        <div class="growth-arrow">→</div>
+                                        <div class="timeline-point">
+                                            <div class="year">2035</div>
+                                            <div class="value">$675.3B</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="total-tam">
+                            <div class="tam-highlight">
+                                <div class="tam-amount">$2T+</div>
+                                <div class="tam-label">Annual Addressable Market</div>
+                                <div class="tam-description">Across healthcare, home, employer benefits</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 8: The Dwel Platform -->
+            <div class="slide" data-slide="8">
+                <div class="slide-content">
+                    <h1>The Dwel Platform</h1>
+                    <div class="platform-overview">
+                        <div class="platform-hero">
+                            <h2>Comprehensive AI-Orchestrated Care Platform</h2>
+                            <p>Intelligent orchestration addressing both loneliness and health risks</p>
+                        </div>
+                        <div class="platform-capabilities">
+                            <div class="capability-card primary">
+                                <div class="capability-number">146+</div>
+                                <div class="capability-title">Care Tasks Managed</div>
+                                <div class="capability-desc">Intelligent orchestration of all care activities</div>
+                            </div>
+                            <div class="capability-card">
+                                <div class="capability-number">80+</div>
+                                <div class="capability-title">IoT Integrations</div>
+                                <div class="capability-desc">Remote monitoring, smart safety, automated notifications</div>
+                            </div>
+                            <div class="capability-card">
+                                <div class="capability-number">48+</div>
+                                <div class="capability-title">Service Providers</div>
+                                <div class="capability-desc">Specialized partners for comprehensive care</div>
+                            </div>
+                        </div>
+                        <div class="key-features">
+                            <h3>Core Platform Features</h3>
+                            <div class="features-grid">
+                                <div class="feature">📊 Remote monitoring</div>
+                                <div class="feature">🛡️ Smart safety systems</div>
+                                <div class="feature">🔔 Automated notifications</div>
+                                <div class="feature">👩‍⚕️ Caregiver coordination</div>
+                                <div class="feature">🗣️ Voice assistants</div>
+                                <div class="feature">🚨 Emergency management</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 9: AI Innovations Transforming Senior Care -->
+            <div class="slide" data-slide="9">
+                <div class="slide-content">
+                    <h1>AI Innovations Transforming Senior Care</h1>
+                    <div class="ai-innovations">
+                        <div class="innovation-grid">
+                            <div class="innovation-card">
+                                <div class="innovation-icon">🔮</div>
+                                <h3>Predictive Analytics</h3>
+                                <p>Monitor daily routines and detect anomalies before they become emergencies</p>
+                            </div>
+                            <div class="innovation-card">
+                                <div class="innovation-icon">⚠️</div>
+                                <h3>Emergency Risk Forecasting</h3>
+                                <p>Environmental and sensor data integration for proactive intervention</p>
+                            </div>
+                            <div class="innovation-card">
+                                <div class="innovation-icon">📈</div>
+                                <h3>Caregiver Dashboards</h3>
+                                <p>Actionable insights on activity patterns and sleep quality</p>
+                            </div>
+                            <div class="innovation-card">
+                                <div class="innovation-icon">💬</div>
+                                <h3>Conversational AI</h3>
+                                <p>Social engagement and companionship through intelligent conversation</p>
+                            </div>
+                            <div class="innovation-card">
+                                <div class="innovation-icon">🎭</div>
+                                <h3>Voice Sentiment Analysis</h3>
+                                <p>Emotional distress detection through voice pattern analysis</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 10: Technology Architecture -->
+            <div class="slide" data-slide="10">
+                <div class="slide-content">
+                    <h1>Technology Architecture</h1>
+                    <div class="tech-architecture">
+                        <div class="three-phase-engine">
+                            <h3>Three-Phase AI Engine</h3>
+                            <div class="phase-workflow">
+                                <div class="phase">
+                                    <div class="phase-number">1</div>
+                                    <h4>Task Initiation</h4>
+                                    <ul>
+                                        <li>Smart device triggers</li>
+                                        <li>Scheduled care events</li>
+                                        <li>Health alerts</li>
+                                        <li>Family requests</li>
+                                    </ul>
+                                </div>
+                                <div class="phase-arrow">→</div>
+                                <div class="phase">
+                                    <div class="phase-number">2</div>
+                                    <h4>Orchestration</h4>
+                                    <ul>
+                                        <li>AI task routing</li>
+                                        <li>Provider matching</li>
+                                        <li>Resource optimization</li>
+                                        <li>Real-time coordination</li>
+                                    </ul>
+                                </div>
+                                <div class="phase-arrow">→</div>
+                                <div class="phase">
+                                    <div class="phase-number">3</div>
+                                    <h4>Proof of Completion</h4>
+                                    <ul>
+                                        <li>Service verification</li>
+                                        <li>Quality assurance</li>
+                                        <li>Family notifications</li>
+                                        <li>Analytics logging</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="integration-ecosystem">
+                            <h3>Smart Home Ecosystem Integration</h3>
+                            <div class="ecosystem-components">
+                                <div class="component">📱 Voice assistants</div>
+                                <div class="component">📡 IoT sensors</div>
+                                <div class="component">🔒 Security systems</div>
+                                <div class="component">🏥 Health devices</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 11: Platform Architecture Overview -->
+            <div class="slide" data-slide="11">
+                <div class="slide-content">
+                    <h1>Platform Architecture Overview</h1>
+                    <div class="platform-architecture">
+                        <div class="tech-stack">
+                            <div class="stack-layer">
+                                <div class="layer-title">🌐 Web Application</div>
+                                <div class="layer-details">Ruby on Rails with Postgres database</div>
+                            </div>
+                            <div class="stack-layer">
+                                <div class="layer-title">⚡ Performance & Caching</div>
+                                <div class="layer-details">Redis for caching and background jobs</div>
+                            </div>
+                            <div class="stack-layer">
+                                <div class="layer-title">🔐 Security & Compliance</div>
+                                <div class="layer-details">HIPAA-compliant cloud with encryption</div>
+                            </div>
+                            <div class="stack-layer">
+                                <div class="layer-title">🛡️ Authentication & Audit</div>
+                                <div class="layer-details">Multi-factor authentication and audit trails</div>
+                            </div>
+                        </div>
+                        <div class="architecture-layers">
+                            <h3>Layered Architecture</h3>
+                            <div class="layers-grid">
+                                <div class="layer">
+                                    <div class="layer-icon">🗣️</div>
+                                    <div class="layer-name">Voice UI</div>
+                                </div>
+                                <div class="layer">
+                                    <div class="layer-icon">👩‍⚕️</div>
+                                    <div class="layer-name">Caregiver Dashboard</div>
+                                </div>
+                                <div class="layer">
+                                    <div class="layer-icon">🏢</div>
+                                    <div class="layer-name">Vendor Portal</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 12: Leadership Team -->
+            <div class="slide" data-slide="12">
+                <div class="slide-content">
+                    <h1>Leadership Team</h1>
+                    <div class="leadership-team">
+                        <div class="team-motto">
+                            <h2>"Not Our First Rodeo"</h2>
+                            <p>Extensive startup experience across the leadership team</p>
+                        </div>
+                        <div class="team-grid">
+                            <div class="team-member ceo">
+                                <div class="member-role">Chairman/CEO</div>
+                                <div class="member-name">Bill Seibel</div>
+                                <div class="member-experience">11 startups experience</div>
+                            </div>
+                            <div class="team-member">
+                                <div class="member-role">Operations</div>
+                                <div class="member-name">Marc Appleman</div>
+                                <div class="member-experience">6 startups experience</div>
+                            </div>
+                            <div class="team-member">
+                                <div class="member-role">CTO</div>
+                                <div class="member-name">Joel Evans</div>
+                                <div class="member-experience">Technical leadership</div>
+                            </div>
+                            <div class="team-member">
+                                <div class="member-role">Chief Creative Officer</div>
+                                <div class="member-name">Mike Welsh</div>
+                                <div class="member-experience">Creative & design expertise</div>
+                            </div>
+                            <div class="team-member">
+                                <div class="member-role">Sales/Marketing</div>
+                                <div class="member-name">Al Lucchese</div>
+                                <div class="member-experience">Growth & marketing</div>
+                            </div>
+                        </div>
+                        <div class="experience-summary">
+                            <div class="summary-stat">
+                                <div class="summary-number">20+</div>
+                                <div class="summary-label">Other ventures across team</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 13: Board of Advisors -->
+            <div class="slide" data-slide="13">
+                <div class="slide-content">
+                    <h1>Board of Advisors</h1>
+                    <div class="board-advisors">
+                        <div class="advisors-grid">
+                            <div class="advisor-card">
+                                <div class="advisor-name">Mike Woodall</div>
+                                <div class="advisor-title">Ex-COO Major Financial Firm</div>
+                            </div>
+                            <div class="advisor-card highlight">
+                                <div class="advisor-name">Maureen Osborne</div>
+                                <div class="advisor-title">Ex-CFO Microsoft, E&Y, JP Morgan</div>
+                            </div>
+                            <div class="advisor-card highlight">
+                                <div class="advisor-name">Ginny Rometti</div>
+                                <div class="advisor-title">Ex-CEO/Chairman IBM</div>
+                            </div>
+                            <div class="advisor-card">
+                                <div class="advisor-name">Lori Place</div>
+                                <div class="advisor-title">Ex-General Counsel Liberty Mutual</div>
+                            </div>
+                            <div class="advisor-card">
+                                <div class="advisor-name">Cheryl Smith</div>
+                                <div class="advisor-title">Ex-CIO WestJet, KeySpan</div>
+                            </div>
+                            <div class="advisor-card">
+                                <div class="advisor-name">Mark Fuller</div>
+                                <div class="advisor-title">Founder Monitor-Clipper</div>
+                            </div>
+                        </div>
+                        <div class="advisor-value">
+                            <h3>World-Class Advisory Network</h3>
+                            <p>Strategic guidance from executives at Fortune 500 companies across technology, healthcare, finance, and operations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 14: Go-To-Market Plan -->
+            <div class="slide" data-slide="14">
+                <div class="slide-content">
+                    <h1>Go-To-Market Plan</h1>
+                    <div class="gtm-plan">
+                        <div class="gtm-phases">
+                            <div class="phase-card phase-1">
+                                <div class="phase-header">
+                                    <div class="phase-number">Phase 1</div>
+                                    <div class="phase-title">Corporate Benefits</div>
+                                </div>
+                                <div class="phase-content">
+                                    <p>Target corporations for wellness benefits subscription model</p>
+                                </div>
+                            </div>
+                            <div class="phase-card phase-2">
+                                <div class="phase-header">
+                                    <div class="phase-number">Phase 2</div>
+                                    <div class="phase-title">Social Technology</div>
+                                </div>
+                                <div class="phase-content">
+                                    <p>Address loneliness epidemic with social engagement technology</p>
+                                </div>
+                            </div>
+                            <div class="phase-card phase-3">
+                                <div class="phase-header">
+                                    <div class="phase-number">Phase 3</div>
+                                    <div class="phase-title">Supplier Network</div>
+                                </div>
+                                <div class="phase-content">
+                                    <p>Add network of vetted suppliers, direct sales channel</p>
+                                </div>
+                            </div>
+                            <div class="phase-card phase-4">
+                                <div class="phase-header">
+                                    <div class="phase-number">Phase 4</div>
+                                    <div class="phase-title">Health Monitoring</div>
+                                </div>
+                                <div class="phase-content">
+                                    <p>Expand to activity and health monitoring services</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gtm-strategy">
+                            <h3>Strategic Market Entry</h3>
+                            <p>Phased approach targeting highest-value segments first, then expanding into adjacent markets with proven platform</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 15: Market Research Findings -->
+            <div class="slide" data-slide="15">
+                <div class="slide-content">
+                    <h1>Market Research Findings</h1>
+                    <div class="research-findings">
+                        <div class="research-overview">
+                            <h2>20+ Interviews Conducted</h2>
+                            <p>Comprehensive market research validating core assumptions</p>
+                        </div>
+                        <div class="findings-grid">
+                            <div class="finding-card">
+                                <div class="finding-icon">😰</div>
+                                <h3>Personal & Professional Toll</h3>
+                                <p>Caregiving takes significant toll on employees both personally and professionally</p>
+                            </div>
+                            <div class="finding-card">
+                                <div class="finding-icon">📉</div>
+                                <h3>Hidden Work Performance Impact</h3>
+                                <p>Hidden burden significantly impacts work performance and productivity</p>
+                            </div>
+                            <div class="finding-card critical">
+                                <div class="finding-icon">🤷</div>
+                                <h3>Employer Awareness Gap</h3>
+                                <p>Employers largely unaware of the problem and its business impact</p>
+                            </div>
+                            <div class="finding-card">
+                                <div class="finding-icon">❌</div>
+                                <h3>No Existing Solution Awareness</h3>
+                                <p>No comprehensive solution exists in the current market</p>
+                            </div>
+                        </div>
+                        <div class="market-validation">
+                            <h3>Clear Market Validation</h3>
+                            <p>Research confirms significant unmet need and willingness to pay for comprehensive aging-in-place platform</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 16: Funding Ask -->
+            <div class="slide" data-slide="16">
+                <div class="slide-content">
+                    <h1>Funding Ask</h1>
+                    <div class="funding-request">
+                        <div class="funding-amount">
+                            <div class="ask-label">Investment Request</div>
+                            <div class="ask-number">$5M</div>
+                            <div class="ask-purpose">To build and launch AI-driven platform</div>
+                        </div>
+                        <div class="business-model">
+                            <h3>Corporate Benefits Subscription Model</h3>
+                            <p>Scalable B2B approach with proven demand validation</p>
+                        </div>
+                        <div class="adjacent-markets">
+                            <h3>Adjacent Market Expansion</h3>
+                            <div class="markets-grid">
+                                <div class="market-item">
+                                    <div class="market-icon">💕</div>
+                                    <div class="market-name">Loneliness Solutions</div>
+                                </div>
+                                <div class="market-item">
+                                    <div class="market-icon">🎖️</div>
+                                    <div class="market-name">Military Families</div>
+                                </div>
+                                <div class="market-item">
+                                    <div class="market-icon">🤝</div>
+                                    <div class="market-name">Supplier Networks</div>
+                                </div>
+                                <div class="market-item">
+                                    <div class="market-icon">🏥</div>
+                                    <div class="market-name">Health Monitoring</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="call-to-action">
+                            <h2>Join Us in Transforming Senior Care</h2>
+                            <p>Help us enable millions of seniors to dwell safely at home with dignity and independence</p>
+                            <button class="btn btn--primary btn--lg cta-button" mailto="hello@dwel.dgital">Schedule Investment Meeting</button>
+							<p>Or email us at <mailto:"hello@dwel.digital">Hello@Dwel.Digital</mailto:></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+# Robots.txt file to disallow all web crawlers
+# This file blocks all search engine crawlers from indexing the website
+
+User-agent: *
+Disallow: /
+
+# Optional: Block specific crawlers individually
+# User-agent: Googlebot
+# Disallow: /
+
+# User-agent: Bingbot  
+# Disallow: /
+
+# User-agent: Slurp
+# Disallow: /
+
+# Note: Place this file in the root directory of your website
+# (e.g., https://yourwebsite.com/robots.txt)

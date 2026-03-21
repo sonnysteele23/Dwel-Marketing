@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DWEL - Elevator Pitch</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .pitch-container {
+            max-width: 900px;
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 3px solid #2563eb;
+        }
+        
+        .logo {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #2563eb;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tagline {
+            font-size: 1.1rem;
+            color: #6b7280;
+            font-weight: 600;
+        }
+        
+        .pitch-section {
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+        
+        .pitch-section h2 {
+            color: #2563eb;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .pitch-section p {
+            color: #374151;
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+        }
+        
+        .problem {
+            background: #fef3c7;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid #f59e0b;
+        }
+        
+        .solution {
+            background: #d1fae5;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid #10b981;
+        }
+        
+        .market {
+            background: #dbeafe;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid #2563eb;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .stat-box {
+            text-align: center;
+            padding: 1rem;
+            background: #f9fafb;
+            border-radius: 10px;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #2563eb;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
+        }
+        
+        .value-props {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .value-prop {
+            display: flex;
+            align-items: start;
+            gap: 0.75rem;
+        }
+        
+        .checkmark {
+            color: #10b981;
+            font-size: 1.5rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .cta {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .cta h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .cta p {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        
+        .contact-item {
+            color: white;
+            font-weight: 600;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .pitch-container {
+                box-shadow: none;
+                padding: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .pitch-container {
+                padding: 2rem 1.5rem;
+            }
+            
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="pitch-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">DWEL</div>
+            <div class="tagline">Balancing Work & Caregiving</div>
+        </div>
+        
+        <!-- The Hook -->
+        <div class="pitch-section">
+            <h2>🎯 The Hook</h2>
+            <p style="font-size: 1.15rem; font-weight: 600; color: #1f2937;">
+                What if you could reduce employee absenteeism by 40%, prevent costly turnover, and boost productivity—while enabling your employees' loved ones to age safely at home?
+            </p>
+        </div>
+        
+        <!-- The Problem -->
+        <div class="pitch-section problem">
+            <h2>⚠️ The Problem</h2>
+            <p>
+                <strong>73% of employees</strong> are juggling work with caregiving responsibilities for aging parents or relatives. This creates a massive burden that's costing the Global 5000 billions in:
+            </p>
+            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                <li><strong>Lost productivity</strong> from distracted, stressed employees</li>
+                <li><strong>Increased absenteeism</strong> for caregiving emergencies</li>
+                <li><strong>Early resignations</strong> when employees can't manage both roles</li>
+            </ul>
+            <p style="margin-top: 1rem;">
+                Meanwhile, <strong>94% of seniors want to age in place</strong>, but without proper support, this leads to safety concerns, family stress, and burnout for working caregivers.
+            </p>
+        </div>
+        
+        <!-- Key Statistics -->
+        <div class="stats">
+            <div class="stat-box">
+                <span class="stat-number">+1B</span>
+                <span class="stat-label">Adults 60+ globally<br>(growing 5X faster)</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">73%</span>
+                <span class="stat-label">Employees managing<br>caregiving duties</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">161M</span>
+                <span class="stat-label">U.S. seniors 65+<br>by 2050</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">94%</span>
+                <span class="stat-label">Seniors prefer<br>aging in place</span>
+            </div>
+        </div>
+        
+        <!-- The Solution -->
+        <div class="pitch-section solution">
+            <h2>✨ The Solution: DWEL</h2>
+            <p style="font-weight: 600; font-size: 1.1rem; margin-bottom: 1rem;">
+                Dwel's integrated AI platform and intelligent technology is the <strong>only solution</strong> that reduces the burden of care driving employee absenteeism, productivity loss, and turnover.
+            </p>
+            
+            <div class="value-props">
+                <div class="value-prop">
+                    <span class="checkmark">✓</span>
+                    <div>
+                        <strong>AI-Powered Monitoring:</strong> 24/7 intelligent technology ensures older adults live safely and confidently at home with predictive alerts and automated support.
+                    </div>
+                </div>
+                <div class="value-prop">
+                    <span class="checkmark">✓</span>
+                    <div>
+                        <strong>Reduce Absenteeism:</strong> Employees gain peace of mind knowing their loved ones are monitored and supported, allowing them to focus on work.
+                    </div>
+                </div>
+                <div class="value-prop">
+                    <span class="checkmark">✓</span>
+                    <div>
+                        <strong>Retain Top Talent:</strong> Prevent early resignations by demonstrating real care for employees' personal challenges through meaningful benefits.
+                    </div>
+                </div>
+                <div class="value-prop">
+                    <span class="checkmark">✓</span>
+                    <div>
+                        <strong>Drive Productivity:</strong> Reduce stress and cognitive load on employee caregivers, enabling higher performance and engagement.
+                    </div>
+                </div>
+                <div class="value-prop">
+                    <span class="checkmark">✓</span>
+                    <div>
+                        <strong>Integrated Platform:</strong> One unified solution connecting caregiving resources, communication tools, and support services seamlessly.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- The Market -->
+        <div class="pitch-section market">
+            <h2>📈 The Market Opportunity</h2>
+            <p>
+                We're targeting the <strong>Global 5000</strong> companies facing the caregiving crisis. With the aging population growing at 5X the rate of the general population, this is a <strong>multi-billion dollar market</strong> that's only accelerating.
+            </p>
+            <p>
+                Our integrated AI platform differentiates us as the <strong>only end-to-end solution</strong> addressing both sides: enabling safe aging-in-place <em>while</em> solving employer retention and productivity challenges.
+            </p>
+        </div>
+        
+        <!-- Why Now -->
+        <div class="pitch-section">
+            <h2>⏰ Why Now?</h2>
+            <p>
+                <strong>Rapidly changing demographics</strong> are driving an urgent need. By 2050, the U.S. will have 161M seniors—a 63% increase from 2010. Companies need solutions <em>now</em> to retain talent and maintain productivity as this wave accelerates.
+            </p>
+            <p>
+                COVID-19 accelerated aging-in-place trends and normalized remote work, creating the perfect moment for technology-enabled caregiving solutions.
+            </p>
+        </div>
+        
+        <!-- The Ask -->
+        <div class="cta">
+            <h2>🚀 Let's Partner to Transform Caregiving</h2>
+            <p>
+                Whether you're an employer looking to support your caregiving employees, an employee seeking solutions, or a potential partner—let's discuss how DWEL can help you address the caregiving challenge.
+            </p>
+            <div class="contact-info">
+                <div class="contact-item">📧 info@dwel.com</div>
+                <div class="contact-item">📞 +1 (555) 123-4567</div>
+                <div class="contact-item">📍 San Francisco, CA</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

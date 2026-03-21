@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DWEL - Balancing Work & Caregiving | Empowering Caregivers</title>
+    <meta name="description" content="DWEL is an employer retention and employee caregiver platform, enabling technology-enhanced aging in place support while helping companies retain valuable talent.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <!-- Chart.js for Data Visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="https://dwel.digital/css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container" >
+            <a style="display: block; text-decoration: none;" href="https://dwel.digital/">
+            <div class="nav-brand">
+                <h1>DWEL</h1>
+                <span class="tagline">Empowering Caregivers</span>
+            </div>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">The Challenge</a></li>
+                <li><a href="#executive-summary" class="nav-link">Executive Summary</a></li>
+                <li><a href="#solution" class="nav-link">Our Platform</a></li>
+                <li><a href="#impact" class="nav-link">Impact</a></li>
+                <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+                <li><a href="#contact" class="nav-link cta-btn">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">BALANCING WORK & CAREGIVING</h1>
+                <p class="hero-subtitle">Dwel's integrated AI platform and intelligent technology is the only solution that reduces the burden of care driving employee absenteeism, productivity loss and turnover</p>
+                
+                <div class="hero-features">
+                    <div class="feature-item">
+                        <i class="fas fa-home"></i>
+                        <p>Enabling older adults to live safely and confidently at home</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-users"></i>
+                        <p>Allowing employers to reduce absenteeism and retain talent</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-chart-line"></i>
+                        <p>Driving higher levels of productivity for the Global 5000</p>
+                    </div>
+                </div>
+                
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-primary">Request a Demo</a>
+                    <a href="#about" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="problem-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">THE CHALLENGE</h2>
+                <div class="section-underline"></div>
+                <p class="section-description">Rapidly changing demographics are driving aging-in-place, creating a huge burden on family caregivers, and causing lost productivity and early resignations for the Global 5000</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card animate-on-scroll">
+                    <div class="stat-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="stat-number">+1B</div>
+                    <p class="stat-description">Adults over 60 globally, growing at 5X the rate of the total world population</p>
+                </div>
+                
+                <div class="stat-card animate-on-scroll">
+                    <div class="stat-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <div class="stat-number">1 in 6</div>
+                    <p class="stat-description">People in the United States are 65+ compared to 1 in 20 in 1920</p>
+                </div>
+                
+                <div class="stat-card animate-on-scroll">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-number">161M</div>
+                    <p class="stat-description">Projected U.S. population 65+ by 2050, a 63% increase over 2010</p>
+                </div>
+                
+                <div class="stat-card animate-on-scroll">
+                    <div class="stat-icon">
+                        <i class="fas fa-house-user"></i>
+                    </div>
+                    <div class="stat-number">94%</div>
+                    <p class="stat-description">Of U.S. seniors 65+ prefer to age in place, living independently</p>
+                </div>
+            </div>
+            
+            <!-- Chart: U.S. Aging Population Growth -->
+            <div class="chart-container animate-on-scroll">
+                <h3 class="chart-title">U.S. Aging Population Growth (2020-2050)</h3>
+                <div style="height: 400px; position: relative;">
+                    <canvas id="populationChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Executive Summary Section -->
+    <section id="executive-summary" class="solution-section" style="background-color: white;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">EXECUTIVE SUMMARY</h2>
+                <div class="section-underline"></div>
+            </div>
+            
+            <div class="executive-summary-content" style="max-width: 900px; margin: 0 auto;">
+                <div class="summary-point animate-on-scroll" style="margin-bottom: 2rem; padding: 2rem; background-color: #f9fafb; border-radius: 15px; border-left: 4px solid #2563eb;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; color: #1f2937; margin-bottom: 1rem;">
+                        <i class="fas fa-chart-line" style="color: #2563eb; margin-right: 0.5rem;"></i>
+                        Rapidly Changing Demographics
+                    </h3>
+                    <p style="font-size: 1.05rem; line-height: 1.8; color: #4b5563;">
+                        The aging population is growing at an unprecedented rate, with over 1 billion adults aged 60+ globally. This demographic shift is fundamentally changing the landscape of work and family responsibilities.
+                    </p>
+                </div>
+                
+                <div class="summary-point animate-on-scroll" style="margin-bottom: 2rem; padding: 2rem; background-color: #f9fafb; border-radius: 15px; border-left: 4px solid #10b981;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; color: #1f2937; margin-bottom: 1rem;">
+                        <i class="fas fa-home" style="color: #10b981; margin-right: 0.5rem;"></i>
+                        Driving Aging-in-Place
+                    </h3>
+                    <p style="font-size: 1.05rem; line-height: 1.8; color: #4b5563;">
+                        94% of seniors prefer to age in place, living independently in their own homes. This trend requires comprehensive technology and support systems to ensure safety and quality of life.
+                    </p>
+                </div>
+                
+                <div class="summary-point animate-on-scroll" style="margin-bottom: 2rem; padding: 2rem; background-color: #f9fafb; border-radius: 15px; border-left: 4px solid #f59e0b;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; color: #1f2937; margin-bottom: 1rem;">
+                        <i class="fas fa-hand-holding-heart" style="color: #f59e0b; margin-right: 0.5rem;"></i>
+                        Huge Burden on Family Caregivers
+                    </h3>
+                    <p style="font-size: 1.05rem; line-height: 1.8; color: #4b5563;">
+                        73% of employees are balancing work with caregiving responsibilities, experiencing stress, burnout, and difficulty managing both roles effectively.
+                    </p>
+                </div>
+                
+                <div class="summary-point animate-on-scroll" style="margin-bottom: 2rem; padding: 2rem; background-color: #f9fafb; border-radius: 15px; border-left: 4px solid #ef4444;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; color: #1f2937; margin-bottom: 1rem;">
+                        <i class="fas fa-briefcase" style="color: #ef4444; margin-right: 0.5rem;"></i>
+                        Lost Productivity & Early Resignations
+                    </h3>
+                    <p style="font-size: 1.05rem; line-height: 1.8; color: #4b5563;">
+                        The Global 5000 face significant challenges with employee absenteeism, reduced productivity, and increased turnover as caregiving employees struggle to balance their responsibilities.
+                    </p>
+                </div>
+                
+                <div class="summary-highlight animate-on-scroll" style="padding: 2.5rem; background: linear-gradient(135deg, #2563eb, #1e40af); border-radius: 15px; text-align: center; color: white;">
+                    <h3 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 1rem;">Dwel's Solution</h3>
+                    <p style="font-size: 1.15rem; line-height: 1.8; opacity: 0.95;">
+                        Dwel's integrated AI platform and intelligent technology support reduces the burden of care, enabling older adults to live safely at home while helping employers reduce absenteeism, retain talent, and drive higher productivity.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="solution-section" style="background-color: #f9fafb;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">OUR INTEGRATED AI PLATFORM</h2>
+                <div class="section-underline"></div>
+                <p class="section-description">The only solution combining AI-powered technology with intelligent support to address the complete caregiving ecosystem. Utilizing, the most advanced agent based MCP enabled orchestration, to learn, plan and action against a set of common tasks, activities and actions. This creates a context driven learning experience driven by voice first inputs, profile templates and developing a trainable algorithim(s) that make the two sided caregiver/recipient as simple as talking on the phone.</p>
+            </div>
+            
+            <div class="solution-grid">
+                <div class="solution-card animate-on-scroll">
+                    <div class="solution-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI-Powered Intelligence</h3>
+                    <p>Advanced artificial intelligence continuously monitors, analyzes, and optimizes caregiving support, providing predictive insights and personalized recommendations.</p>
+                </div>
+                
+                <div class="solution-card animate-on-scroll">
+                    <div class="solution-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Safety & Confidence</h3>
+                    <p>Comprehensive monitoring and alert systems enable older adults to live safely and confidently at home with 24/7 intelligent technology support.</p>
+                </div>
+                
+                <div class="solution-card animate-on-scroll">
+                    <div class="solution-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Reduce Absenteeism</h3>
+                    <p>Help employers reduce employee absenteeism by providing reliable caregiving support that allows employees to focus on their work with peace of mind.</p>
+                </div>
+                
+                <div class="solution-card animate-on-scroll">
+                    <div class="solution-icon">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <h3>Retain Top Talent</h3>
+                    <p>Prevent early resignations and retain valuable employees by offering meaningful support that demonstrates care for their personal challenges.</p>
+                </div>
+                
+                <div class="solution-card animate-on-scroll">
+                    <div class="solution-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Drive Productivity</h3>
+                    <p>Enable higher levels of productivity by reducing stress and cognitive load on employees managing caregiving responsibilities.</p>
+                </div>
+                
+                <div class="solution-card animate-on-scroll">
+                    <div class="solution-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>Integrated Platform</h3>
+                    <p>Seamlessly integrates all caregiving resources, communication tools, and support services into one unified, easy-to-use platform.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section (formerly Market) -->
+    <section id="impact" class="market-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">OUR IMPACT</h2>
+                <div class="section-underline"></div>
+                <p class="section-description" style="color: rgb(255, 255, 255); !important">Making a difference for employees, employers, and families</p>
+            </div>
+            
+            <div class="market-stats">
+                <div class="market-stat animate-on-scroll">
+                    <div class="market-stat-visual">
+                        <div class="percentage-circle" data-percentage="73">
+                            <svg viewBox="0 0 200 200">
+                                <circle cx="100" cy="100" r="90"></circle>
+                                <circle cx="100" cy="100" r="90" class="progress"></circle>
+                            </svg>
+                            <div class="percentage-text">73%</div>
+                        </div>
+                    </div>
+                    <h3>Employee Caregivers</h3>
+                    <p>Of employees are managing caregiving responsibilities alongside their work duties, facing daily challenges</p>
+                </div>
+                
+                <div class="market-stat animate-on-scroll">
+                    <div class="market-stat-visual">
+                        <div class="market-icon-large">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                    </div>
+                    <h3>Retain Talent</h3>
+                    <p>Companies using DWEL see improved employee retention and reduced turnover costs among caregiving staff</p>
+                </div>
+                
+                <div class="market-stat animate-on-scroll">
+                    <div class="market-stat-visual">
+                        <div class="market-icon-large">
+                            <i class="fas fa-smile"></i>
+                        </div>
+                    </div>
+                    <h3>Better Outcomes</h3>
+                    <p>Families report improved quality of care and reduced stress when using our technology-enhanced platform</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="opportunity-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">HOW IT WORKS</h2>
+                <div class="section-underline"></div>
+                <p class="section-description">Simple steps to get started with DWEL</p>
+            </div>
+            
+            <div class="opportunity-details">
+                <div class="opportunity-item animate-on-scroll">
+                    <i class="fas fa-user-plus"></i>
+                    <div>
+                        <h4>1. Sign Up</h4>
+                        <p>Employers can easily add DWEL to their benefits package. Employees create their accounts and set up their caregiving profiles.</p>
+                    </div>
+                </div>
+                
+                <div class="opportunity-item animate-on-scroll">
+                    <i class="fas fa-clipboard-list"></i>
+                    <div>
+                        <h4>2. Assess Needs</h4>
+                        <p>Our platform evaluates caregiving requirements and provides personalized recommendations for support services and resources.</p>
+                    </div>
+                </div>
+                
+                <div class="opportunity-item animate-on-scroll">
+                    <i class="fas fa-hands-helping"></i>
+                    <div>
+                        <h4>3. Access Resources</h4>
+                        <p>Connect with verified caregiving services, schedule support, and access educational resources all in one place.</p>
+                    </div>
+                </div>
+                
+                <div class="opportunity-item animate-on-scroll">
+                    <i class="fas fa-chart-line"></i>
+                    <div>
+                        <h4>4. Track & Optimize</h4>
+                        <p>Monitor care progress, adjust support as needs change, and maintain work-life balance with our intelligent tracking tools.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cta-box animate-on-scroll">
+                <h3>Ready to Transform Your Workplace?</h3>
+                <p>Join forward-thinking companies that are supporting their employee caregivers and building stronger teams</p>
+                <a href="#contact" class="btn btn-primary btn-large">Request a Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">GET IN TOUCH</h2>
+                <div class="section-underline"></div>
+                <p class="section-description">Ready to learn more? We'd love to hear from you and discuss how DWEL can help your organization.</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div style="width:300px; margin: auto;">
+                            <h4>Email</h4>
+                            <!-- <a href="mailto:hi@dwel.digital">hi@dwel.digital</p> -->
+                            <a href="mailto:hi%40dwel.digital?cc=hello%40dwel.digital&subject=Want%20to%20learn%20more%20about%20Dwel&body=Hi%0AI%20am%20interested%20in%20learning%20more%20about%20Dwel.">Send Email</a>
+                        </div>
+                    </div>
+                    
+                    <!-- <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div> -->
+                            <!-- <h4>Phone</h4>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>San Francisco, CA</p>
+                        </div>
+                    </div>
+                     -->
+                    <!-- <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Business Hours</h4>
+                            <p>Mon-Fri: 9am - 6pm PST</p>
+                        </div>
+                    </div> -->
+                </div>
+                
+                <!-- <div class="contact-form-container">
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="company">Company/Organization</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="inquiry">Inquiry Type *</label>
+                            <select id="inquiry" name="inquiry" required>
+                                <option value="">Select an option</option>
+                                <option value="employer">Employer - Add to Benefits</option>
+                                <option value="employee">Employee - Learn More</option>
+                                <option value="partnership">Partnership Opportunity</option>
+                                <option value="press">Press/Media Inquiry</option>
+                                <option value="general">General Question</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="4" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-large">Send Message</button>
+                    </form>
+                    
+                    <div id="formMessage" class="form-message"></div>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>DWEL</h3>
+                    <p>Balancing Work & Caregiving</p>
+                    <div class="social-links" style="margin-top: 1rem;">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="#about">The Challenge</a></li>
+                            <li><a href="#executive-summary">Executive Summary</a></li>
+                            <li><a href="#solution">Our Platform</a></li>
+                            <li><a href="#impact">Impact</a></li>
+                            <li><a href="#how-it-works">How It Works</a></li>
+                            <li><a href="https://dwel.digital/elevator-pitch.html" target="_blank">One Pager</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="#contact">Contact Us</a></li>
+                            <li><a href="#">FAQs</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 DWEL. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Custom JavaScript -->
+    <script src="https://dwel.digital/js/main.js"></script>
+</body>
+</html>
