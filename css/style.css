@@ -73,7 +73,8 @@ body {
     flex-direction: column;
 }
 
-.nav-brand h1 {
+.nav-brand .brand-name {
+    display: block;
     font-size: 1.8rem;
     font-weight: 800;
     font-family: 'Noto Serif', Georgia, serif;
