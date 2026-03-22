@@ -75,14 +75,12 @@ body {
 
 .nav-brand .brand-name {
     display: block;
+    font-size: 1.8rem;
+    font-weight: 800;
+    font-family: 'Noto Serif', Georgia, serif;
     color: var(--primary-color);
-    line-height: 1;
-}
-
-.nav-brand .brand-name svg {
-    display: block;
-    height: 30px;
-    width: auto;
+    letter-spacing: -0.5px;
+    text-transform: lowercase;
 }
 
 .nav-brand .tagline {
@@ -175,7 +173,7 @@ body {
     background: var(--primary-color);
     color: white;
     padding-top: 80px;
-    overflow: visible;
+    overflow: hidden;
 }
 
 .hero-background {
